@@ -1,0 +1,69 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" rx="48" fill="url(#bg)"/>
+  <circle cx="1296" cy="184" r="168" fill="url(#glow1)"/>
+  <circle cx="312" cy="820" r="198" fill="url(#glow2)"/>
+  <path d="M314 726C482 564 626 462 792 406C982 340 1176 334 1380 408" stroke="rgba(255,255,255,0.38)" stroke-width="4" stroke-linecap="round"/>
+
+  <g>
+    <rect x="130" y="140" width="520" height="654" rx="40" fill="rgba(255,244,240,0.22)" stroke="rgba(255,255,255,0.34)" stroke-width="2"/>
+    <rect x="168" y="182" width="444" height="576" rx="32" fill="rgba(255,252,248,0.8)"/>
+    <rect x="206" y="224" width="368" height="300" rx="28" fill="url(#live)"/>
+    <circle cx="390" cy="374" r="88" fill="rgba(255,255,255,0.76)"/>
+    <circle cx="390" cy="374" r="62" fill="rgba(215,113,93,0.26)"/>
+    <path d="M376 334L428 374L376 414V334Z" fill="#D36D62"/>
+    <rect x="222" y="562" width="260" height="28" rx="14" fill="rgba(211,109,98,0.18)"/>
+    <rect x="222" y="608" width="210" height="18" rx="9" fill="rgba(31,48,51,0.18)"/>
+    <rect x="222" y="642" width="160" height="18" rx="9" fill="rgba(31,48,51,0.12)"/>
+  </g>
+
+  <g opacity="0.95">
+    <rect x="756" y="138" width="502" height="642" rx="42" transform="rotate(-7 756 138)" fill="rgba(255,247,243,0.2)" stroke="rgba(255,255,255,0.36)" stroke-width="2"/>
+    <rect x="820" y="208" width="378" height="500" rx="34" transform="rotate(-7 820 208)" fill="#FFF7F2"/>
+    <rect x="874" y="266" width="270" height="270" rx="24" transform="rotate(-7 874 266)" fill="url(#frame)"/>
+    <path d="M1006 304C1030 272 1060 256 1092 256C1132 256 1164 286 1164 328C1164 390 1100 422 1044 456C998 424 958 394 958 346C958 308 988 278 1024 278C1040 278 1056 284 1068 294L1006 304Z" fill="rgba(255,255,255,0.84)"/>
+    <rect x="896" y="558" width="202" height="24" rx="12" transform="rotate(-7 896 558)" fill="rgba(211,109,98,0.18)"/>
+    <rect x="902" y="598" width="162" height="16" rx="8" transform="rotate(-7 902 598)" fill="rgba(31,48,51,0.16)"/>
+  </g>
+
+  <g>
+    <path d="M624 524C742 448 868 422 1022 432" stroke="rgba(255,255,255,0.54)" stroke-width="12" stroke-linecap="round"/>
+    <path d="M620 522C742 450 854 436 980 438" stroke="url(#trail)" stroke-width="26" stroke-linecap="round"/>
+  </g>
+
+  <text x="140" y="874" fill="#FFF7F2" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" letter-spacing="-1.6">
+    LiveToFrame
+  </text>
+  <text x="140" y="934" fill="rgba(255,247,242,0.82)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" letter-spacing="2">
+    TURN A LIVING MOMENT INTO A FRAME YOU WANT TO KEEP.
+  </text>
+
+  <defs>
+    <linearGradient id="bg" x1="148" y1="96" x2="1374" y2="912" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4C6BE"/>
+      <stop offset="0.52" stop-color="#D57E74"/>
+      <stop offset="1" stop-color="#7A4551"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1296 184) rotate(90) scale(168)">
+      <stop stop-color="#FFE6DF" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#FFE6DF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(312 820) rotate(90) scale(198)">
+      <stop stop-color="#FFD7CC" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#FFD7CC" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="live" x1="206" y1="224" x2="574" y2="524" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6F3"/>
+      <stop offset="0.5" stop-color="#F6C7B8"/>
+      <stop offset="1" stop-color="#D77A6A"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="874" y1="266" x2="1144" y2="536" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8DDD4"/>
+      <stop offset="0.62" stop-color="#E19F8F"/>
+      <stop offset="1" stop-color="#C66560"/>
+    </linearGradient>
+    <linearGradient id="trail" x1="620" y1="480" x2="980" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7F2"/>
+      <stop offset="1" stop-color="#FFD8CE"/>
+    </linearGradient>
+  </defs>
+</svg>

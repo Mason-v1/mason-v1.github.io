@@ -1,0 +1,68 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" rx="48" fill="url(#bg)"/>
+  <circle cx="1264" cy="186" r="162" fill="url(#glow1)"/>
+  <circle cx="244" cy="786" r="214" fill="url(#glow2)"/>
+  <path d="M156 676C338 602 524 568 724 578C890 586 1074 636 1290 742" stroke="rgba(255,255,255,0.32)" stroke-width="4" stroke-linecap="round"/>
+
+  <g>
+    <rect x="136" y="144" width="568" height="676" rx="40" fill="rgba(247,251,248,0.18)" stroke="rgba(255,255,255,0.34)" stroke-width="2"/>
+    <rect x="174" y="182" width="492" height="600" rx="34" fill="rgba(255,252,248,0.84)"/>
+    <rect x="214" y="226" width="186" height="186" rx="28" fill="url(#check1)"/>
+    <rect x="430" y="226" width="196" height="186" rx="28" fill="url(#check2)"/>
+    <rect x="214" y="442" width="412" height="116" rx="26" fill="rgba(22,77,64,0.1)"/>
+    <rect x="246" y="476" width="250" height="22" rx="11" fill="#1D5B4F"/>
+    <rect x="246" y="516" width="204" height="16" rx="8" fill="rgba(29,91,79,0.26)"/>
+    <rect x="214" y="588" width="126" height="126" rx="26" fill="rgba(22,77,64,0.12)"/>
+    <rect x="358" y="588" width="268" height="126" rx="26" fill="rgba(255,214,173,0.76)"/>
+  </g>
+
+  <g>
+    <rect x="848" y="156" width="552" height="664" rx="42" fill="rgba(15,40,34,0.2)"/>
+    <rect x="890" y="198" width="468" height="580" rx="34" fill="rgba(248,252,250,0.86)"/>
+    <rect x="934" y="242" width="380" height="88" rx="24" fill="rgba(29,91,79,0.1)"/>
+    <rect x="970" y="270" width="214" height="22" rx="11" fill="#205E52"/>
+    <rect x="934" y="360" width="380" height="260" rx="28" fill="url(#calendar)"/>
+    <path d="M978 540L1044 474L1118 516L1198 420L1268 444" stroke="#FFF7EE" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="1044" cy="474" r="18" fill="#FFF7EE"/>
+    <circle cx="1118" cy="516" r="18" fill="#FFF7EE"/>
+    <circle cx="1198" cy="420" r="18" fill="#FFF7EE"/>
+    <circle cx="1268" cy="444" r="18" fill="#FFF7EE"/>
+    <rect x="934" y="650" width="206" height="22" rx="11" fill="rgba(29,91,79,0.18)"/>
+    <rect x="934" y="692" width="156" height="16" rx="8" fill="rgba(29,91,79,0.12)"/>
+  </g>
+
+  <text x="140" y="876" fill="#F7FCF8" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" letter-spacing="-1.6">
+    DidMore
+  </text>
+  <text x="140" y="936" fill="rgba(247,252,248,0.82)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" letter-spacing="2">
+    MAKE PROGRESS FEEL LIGHT, VISIBLE AND WORTH REPEATING.
+  </text>
+
+  <defs>
+    <linearGradient id="bg" x1="116" y1="98" x2="1408" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A8D1BB"/>
+      <stop offset="0.54" stop-color="#5B8E79"/>
+      <stop offset="1" stop-color="#244A43"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1264 186) rotate(90) scale(162)">
+      <stop stop-color="#E8FFF4" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#E8FFF4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(244 786) rotate(90) scale(214)">
+      <stop stop-color="#CFE8D9" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#CFE8D9" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="check1" x1="214" y1="226" x2="400" y2="412" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EFF9F3"/>
+      <stop offset="1" stop-color="#A5D0B8"/>
+    </linearGradient>
+    <linearGradient id="check2" x1="430" y1="226" x2="626" y2="412" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE8C9"/>
+      <stop offset="1" stop-color="#E5A060"/>
+    </linearGradient>
+    <linearGradient id="calendar" x1="934" y1="360" x2="1314" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#90B8A3"/>
+      <stop offset="1" stop-color="#3B6B5B"/>
+    </linearGradient>
+  </defs>
+</svg>

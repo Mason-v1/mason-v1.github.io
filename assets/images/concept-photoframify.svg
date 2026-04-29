@@ -1,0 +1,80 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" rx="48" fill="url(#bg)"/>
+  <circle cx="1282" cy="190" r="174" fill="url(#glow)"/>
+  <circle cx="256" cy="774" r="214" fill="url(#glow2)"/>
+  <rect x="82" y="78" width="1436" height="844" rx="40" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.34)" stroke-width="2"/>
+
+  <g opacity="0.9">
+    <rect x="130" y="136" width="468" height="640" rx="34" fill="url(#card1)"/>
+    <rect x="164" y="172" width="400" height="440" rx="28" fill="#FBF2E7"/>
+    <rect x="192" y="200" width="344" height="384" rx="24" fill="url(#photo)"/>
+    <rect x="210" y="516" width="310" height="34" rx="17" fill="rgba(255,255,255,0.7)"/>
+    <rect x="210" y="562" width="226" height="18" rx="9" fill="rgba(255,255,255,0.46)"/>
+    <rect x="164" y="636" width="188" height="92" rx="22" fill="rgba(255,255,255,0.68)"/>
+    <rect x="372" y="636" width="192" height="92" rx="22" fill="rgba(255,255,255,0.52)"/>
+  </g>
+
+  <g opacity="0.96">
+    <rect x="650" y="194" width="374" height="260" rx="30" fill="rgba(255,250,243,0.72)"/>
+    <rect x="678" y="222" width="318" height="188" rx="24" fill="rgba(255,255,255,0.86)"/>
+    <rect x="714" y="256" width="248" height="120" rx="20" fill="url(#frame)"/>
+    <rect x="770" y="116" width="500" height="640" rx="40" transform="rotate(8 770 116)" fill="url(#card2)" stroke="rgba(255,255,255,0.36)" stroke-width="2"/>
+    <rect x="832" y="188" width="380" height="488" rx="30" transform="rotate(8 832 188)" fill="#FFF8F0"/>
+    <rect x="876" y="242" width="292" height="292" rx="22" transform="rotate(8 876 242)" fill="url(#photo2)"/>
+    <rect x="898" y="544" width="236" height="28" rx="14" transform="rotate(8 898 544)" fill="rgba(255,255,255,0.86)"/>
+    <rect x="904" y="588" width="176" height="16" rx="8" transform="rotate(8 904 588)" fill="rgba(255,255,255,0.52)"/>
+  </g>
+
+  <g>
+    <rect x="1088" y="540" width="332" height="206" rx="30" fill="rgba(22,30,28,0.2)"/>
+    <rect x="1118" y="570" width="272" height="146" rx="24" fill="rgba(255,249,241,0.8)"/>
+    <rect x="1146" y="598" width="216" height="24" rx="12" fill="#1E4C43"/>
+    <rect x="1146" y="638" width="176" height="18" rx="9" fill="rgba(30,76,67,0.28)"/>
+    <rect x="1146" y="670" width="132" height="18" rx="9" fill="rgba(30,76,67,0.18)"/>
+  </g>
+
+  <text x="140" y="870" fill="#FFF8F0" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" letter-spacing="-1.6">
+    PhotoFramify
+  </text>
+  <text x="140" y="930" fill="rgba(255,248,240,0.82)" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" letter-spacing="2">
+    FRAME IT. WATERMARK IT. MAKE EVERY SHOT FEEL FINISHED.
+  </text>
+
+  <defs>
+    <linearGradient id="bg" x1="140" y1="86" x2="1382" y2="930" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EAB46E"/>
+      <stop offset="0.5" stop-color="#CD7E57"/>
+      <stop offset="1" stop-color="#7E4B3E"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1282 190) rotate(90) scale(174)">
+      <stop stop-color="#FFE6B6" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#FFE6B6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256 774) rotate(90) scale(214)">
+      <stop stop-color="#F8D7AB" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#F8D7AB" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="card1" x1="130" y1="136" x2="598" y2="776" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EBD6BA"/>
+      <stop offset="1" stop-color="#B66E4E"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="770" y1="116" x2="1270" y2="756" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D29375"/>
+      <stop offset="1" stop-color="#7F4B40"/>
+    </linearGradient>
+    <linearGradient id="photo" x1="226" y1="216" x2="496" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8F0E6"/>
+      <stop offset="0.54" stop-color="#D78B5A"/>
+      <stop offset="1" stop-color="#7A4A37"/>
+    </linearGradient>
+    <linearGradient id="photo2" x1="906" y1="250" x2="1148" y2="506" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF4E6"/>
+      <stop offset="0.58" stop-color="#E5B16F"/>
+      <stop offset="1" stop-color="#A85D47"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="714" y1="256" x2="962" y2="376" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#234B43"/>
+      <stop offset="1" stop-color="#6F8F7A"/>
+    </linearGradient>
+  </defs>
+</svg>
