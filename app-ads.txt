@@ -1,4 +1,1 @@
-# Replace the publisher ID below with your real AdMob Publisher ID.
-# Example source in AdMob:
-# Apps -> View all apps -> app-ads.txt -> How to set up app-ads.txt
 google.com, pub-7460120225474983, DIRECT, f08c47fec0942fa0
