@@ -560,6 +560,13 @@ a {
         linear-gradient(135deg, #f4d9a6 0%, #efc183 42%, #e2ab73 100%);
 }
 
+.tone-collage {
+    background:
+        radial-gradient(circle at 24% 18%, rgba(255, 246, 212, 0.88), transparent 26%),
+        radial-gradient(circle at 82% 12%, rgba(178, 219, 211, 0.56), transparent 24%),
+        linear-gradient(145deg, #91c6bd 0%, #f0c06b 52%, #dc8b68 100%);
+}
+
 .tone-rose {
     background:
         radial-gradient(circle at 18% 14%, rgba(255, 235, 231, 0.94), transparent 26%),
