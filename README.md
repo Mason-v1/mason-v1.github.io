@@ -11,6 +11,8 @@ Live site: https://mason-v1.github.io/Apps/
 - **LiveToFrame** — Extract still frames and convert Live Photos into shareable formats.
 - **DidMore** — A lightweight daily task and habit timeline.
 - **Emotify** — A simple meme and expression content creator.
+- **Liply** — AI lipstick try-on for previewing and saving beauty looks.
+- **Lift** — A focused workout log for tracking sets, weights, and progress.
 
 ## Built With
 
