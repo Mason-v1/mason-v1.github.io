@@ -1,34 +1,79 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PixSafe 隐私协议</title>
   <style>
-    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", sans-serif; color: #111; background: #f6f6f4; }
-    body { margin: 0; padding: 22px; line-height: 1.65; }
-    h1 { font-size: 28px; line-height: 1.08; margin: 0 0 16px; letter-spacing: 0; }
-    h2 { font-size: 17px; margin: 24px 0 8px; }
-    p, li { font-size: 14px; color: #555; }
-    .card { background: #fff; border: 1px solid #e4e4e1; border-radius: 18px; padding: 16px; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+      line-height: 1.8;
+      color: #333;
+      padding: 20px;
+      background-color: #f7f8fb;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: #111; }
+    .update-date { font-size: 13px; color: #666; margin-bottom: 24px; }
+    h2 { font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 12px; color: #111; }
+    p { font-size: 15px; margin-bottom: 16px; text-align: justify; }
     ul { padding-left: 20px; }
+    li { font-size: 15px; margin-bottom: 8px; }
+    .highlight {
+      background-color: #eef4ff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    .contact {
+      background-color: #e9edf6;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 24px;
+    }
+    .contact a { color: #1f5fd1; text-decoration: none; }
   </style>
 </head>
 <body>
-  <h1>隐私协议</h1>
-  <div class="card">
-    <p>PixSafe以本地照片隐私处理为核心。你选择的照片会在本机完成扫描与清理。</p>
+  <h1>PixSafe 隐私协议</h1>
+  <p class="update-date">最后更新：2026 年 7 月 1 日</p>
+
+  <p>欢迎使用 PixSafe（以下简称“本 App”）。PixSafe 帮助你将选择的视频或照片序列制作成 iPhone 锁屏 Live Photo。我们重视你的隐私，并尽量让核心制作过程在你的设备本地完成。</p>
+
+  <h2>1. 我们处理的数据</h2>
+  <ul>
+    <li><strong>你选择的视频</strong>：仅用于裁剪并生成 Live Photo。</li>
+    <li><strong>你选择的照片</strong>：仅用于生成照片序列 Live Photo。</li>
+    <li><strong>生成的导出文件</strong>：仅在你选择导出时保存到相册。</li>
+    <li><strong>语言偏好与购买状态</strong>：用于记住 App 设置和 Pro 权限。</li>
+  </ul>
+
+  <h2>2. 本地处理</h2>
+  <div class="highlight">
+    当前版本会在你的设备本地处理所选视频和照片。本 App 不会为了制作 Live Photo 而将你选择的媒体上传到服务器。
   </div>
+  <p>视频裁剪、帧提取、照片序列渲染和 Live Photo 打包都在设备端完成。</p>
 
-  <h2>本地处理</h2>
-  <p>App 会使用设备端能力扫描所选照片中的元数据、定位信息、人脸、二维码和可见文字。核心清理体验不会把照片上传到服务器。</p>
+  <h2>3. 系统权限</h2>
+  <ul>
+    <li><strong>相册读取权限</strong>：用于选择制作动态锁屏所需的照片或视频。</li>
+    <li><strong>相册添加权限</strong>：用于保存生成的 Live Photo。</li>
+    <li><strong>相机和麦克风权限</strong>：仅在本 App 提供需要录制的功能时使用。</li>
+  </ul>
 
-  <h2>清洁副本</h2>
-  <p>导出结果会作为新的清洁副本生成，不会覆盖原图。清洁副本可以移除隐藏元数据，也可以包含你选择的可见打码区域。</p>
+  <h2>4. 第三方服务</h2>
+  <p>当前版本不需要账号，不包含广告 SDK，也不会向第三方出售或分享你选择的媒体内容。</p>
 
-  <h2>数据收集</h2>
-  <p>核心 App 不需要账号，不接入广告或跟踪 SDK。如后续加入分析或崩溃统计，应在正式发布前明确说明。</p>
+  <h2>5. 数据删除</h2>
+  <p>原始照片和视频仍保留在你的相册中。生成的 Live Photo 可在系统“照片”App 中删除。卸载本 App 会移除本地运行数据；App Store 购买记录由 Apple 管理。</p>
 
-  <h2>联系方式</h2>
-  <p>如有隐私相关问题，请联系开发者：zhyl1881@163.com。</p>
+  <h2>6. 政策更新</h2>
+  <p>我们可能会不时更新本隐私协议。任何变更都会发布在此页面。</p>
+
+  <h2>7. 联系方式</h2>
+  <div class="contact">
+    <p>如有隐私相关问题，请联系：</p>
+    <p><a href="mailto:zhyl1881@163.com">zhyl1881@163.com</a></p>
+  </div>
 </body>
 </html>
