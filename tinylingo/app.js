@@ -48,7 +48,61 @@ let recognition;
 let isRecording = false;
 let drawing = false;
 let hasInk = false;
+let preferredVoice;
 const ctx = canvas.getContext("2d");
+
+function selectEnglishVoice() {
+  if (!("speechSynthesis" in window)) {
+    return undefined;
+  }
+
+  const voices = window.speechSynthesis.getVoices();
+  const englishVoices = voices.filter((voice) => /^en([-_]|$)/i.test(voice.lang || ""));
+
+  if (!englishVoices.length) {
+    return undefined;
+  }
+
+  const preferredNames = [
+    "Samantha",
+    "Alex",
+    "Ava",
+    "Daniel",
+    "Karen",
+    "Moira",
+    "Google US English",
+    "Microsoft Jenny"
+  ];
+  const byName = preferredNames
+    .map((name) => englishVoices.find((voice) => voice.name.includes(name)))
+    .find(Boolean);
+
+  if (byName) {
+    return byName;
+  }
+
+  return englishVoices.find((voice) => voice.lang === "en-US" && voice.localService)
+    || englishVoices.find((voice) => voice.lang === "en-US")
+    || englishVoices.find((voice) => voice.localService)
+    || englishVoices[0];
+}
+
+function refreshVoices() {
+  preferredVoice = selectEnglishVoice();
+}
+
+function setupSpeechVoices() {
+  if (!("speechSynthesis" in window)) {
+    return;
+  }
+
+  refreshVoices();
+  if (typeof window.speechSynthesis.addEventListener === "function") {
+    window.speechSynthesis.addEventListener("voiceschanged", refreshVoices);
+  } else {
+    window.speechSynthesis.onvoiceschanged = refreshVoices;
+  }
+}
 
 function speak(text) {
   if (!("speechSynthesis" in window)) {
@@ -57,9 +111,16 @@ function speak(text) {
 
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "en-US";
-  utterance.rate = 0.78;
-  utterance.pitch = 1.08;
+  preferredVoice ||= selectEnglishVoice();
+  if (preferredVoice) {
+    utterance.voice = preferredVoice;
+    utterance.lang = preferredVoice.lang;
+  } else {
+    utterance.lang = "en-US";
+  }
+  utterance.rate = text.length <= 14 ? 0.72 : 0.82;
+  utterance.pitch = 1;
+  utterance.volume = 1;
   window.speechSynthesis.speak(utterance);
 }
 
@@ -614,6 +675,7 @@ async function boot() {
   }
 
   selectedStageId = appData.grades[0].id;
+  setupSpeechVoices();
   setupEvents();
   renderHome();
 }
