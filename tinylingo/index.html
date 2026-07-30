@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TinyLingo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="phone-shell" aria-live="polite">
+      <section class="home-screen" data-screen="home">
+        <header class="home-header">
+          <div>
+            <h1>TinyLingo</h1>
+            <p>每天 10 个小任务</p>
+          </div>
+          <button class="icon-button sound-check" type="button" aria-label="播放示例">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 9v6h4l5 4V5L8 9H4Z"></path>
+              <path d="M16 8.5a4 4 0 0 1 0 7"></path>
+              <path d="M18.5 6a7 7 0 0 1 0 12"></path>
+            </svg>
+          </button>
+        </header>
+
+        <div class="animal-row" aria-label="动物卡片">
+          <article class="animal-card fox">
+            <span>🦊</span>
+            <strong>Fox</strong>
+          </article>
+          <article class="animal-card panda">
+            <span>🐼</span>
+            <strong>Panda</strong>
+          </article>
+          <article class="animal-card whale">
+            <span>🐳</span>
+            <strong>Whale</strong>
+          </article>
+        </div>
+
+        <section class="stage-section">
+          <h2>阶段</h2>
+          <div class="stage-list"></div>
+        </section>
+
+        <section class="start-card">
+          <div>
+            <h2>今日任务</h2>
+            <p class="today-count">0 个</p>
+          </div>
+          <span class="sparkle-mark" aria-hidden="true">✦</span>
+          <button class="primary-button start-today" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7-11-7Z"></path></svg>
+            开始
+          </button>
+        </section>
+
+        <section class="review-card">
+          <div>
+            <h2>待复习</h2>
+            <p><span class="review-count">0</span> 个要再练</p>
+          </div>
+          <button class="secondary-button start-reviews" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 12a8 8 0 0 1-13.7 5.7"></path>
+              <path d="M4 12A8 8 0 0 1 17.7 6.3"></path>
+              <path d="M17 3v4h-4"></path>
+              <path d="M7 21v-4h4"></path>
+            </svg>
+            开始
+          </button>
+        </section>
+
+        <section class="manual-card">
+          <div>
+            <h2>手动输入</h2>
+            <p>词语、短语或句子</p>
+          </div>
+          <button class="secondary-button open-manual" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 5v14"></path>
+              <path d="M5 12h14"></path>
+            </svg>
+            输入
+          </button>
+        </section>
+      </section>
+
+      <section class="manual-screen hidden" data-screen="manual">
+        <header class="lesson-topbar">
+          <button class="icon-button close-manual" type="button" aria-label="返回">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+          </button>
+          <strong class="lesson-title">手动输入</strong>
+          <span class="lesson-count"></span>
+        </header>
+
+        <section class="manual-panel">
+          <h2>加入待复习</h2>
+          <textarea class="manual-input" rows="5" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="输入 apple、good morning 或 I like apples."></textarea>
+          <button class="primary-button add-manual-review" type="button" disabled>开始复习</button>
+        </section>
+      </section>
+
+      <section class="lesson-screen hidden" data-screen="lesson">
+        <header class="lesson-topbar">
+          <button class="icon-button close-lesson" type="button" aria-label="返回">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+          </button>
+          <strong class="lesson-title">今日任务</strong>
+          <span class="lesson-count">1/10</span>
+        </header>
+
+        <div class="progress-track">
+          <span class="progress-fill"></span>
+        </div>
+
+        <article class="target-card">
+          <p class="target-kind">Word</p>
+          <h2 class="target-title">hello</h2>
+          <p class="target-meaning">你好</p>
+          <button class="review-item-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16Z"></path>
+            </svg>
+            待复习
+          </button>
+        </article>
+
+        <section class="step-card">
+          <div class="step-view listen-step" data-step="listen">
+            <button class="listen-button" type="button" aria-label="听一听">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 9v6h4l5 4V5L8 9H4Z"></path>
+                <path d="M16 8.5a4 4 0 0 1 0 7"></path>
+                <path d="M18.5 6a7 7 0 0 1 0 12"></path>
+              </svg>
+            </button>
+            <button class="primary-button next-from-listen" type="button">听好了</button>
+          </div>
+
+          <div class="step-view read-step hidden" data-step="read">
+            <button class="record-button" type="button" aria-label="读一读">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"></path>
+                <path d="M19 11a7 7 0 0 1-14 0"></path>
+                <path d="M12 18v3"></path>
+              </svg>
+            </button>
+            <p class="transcript">...</p>
+            <div class="split-actions">
+              <button class="secondary-button mark-review" type="button">待复习</button>
+              <button class="primary-button next-from-read" type="button" disabled>读好了</button>
+            </div>
+          </div>
+
+          <div class="step-view spell-step hidden" data-step="spell">
+            <div class="slot-grid"></div>
+            <div class="tile-grid"></div>
+            <p class="support-meaning"></p>
+          </div>
+
+          <div class="step-view write-step hidden" data-step="write">
+            <p class="ghost-word"></p>
+            <canvas class="write-canvas" width="700" height="420"></canvas>
+            <input class="write-input" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="键盘输入" aria-label="键盘输入" />
+            <div class="split-actions">
+              <button class="secondary-button clear-canvas" type="button">擦掉</button>
+              <button class="primary-button finish-item" type="button" disabled>写好了</button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <div class="confetti-layer" aria-hidden="true"></div>
+    </main>
+
+    <script src="./app-data-inline.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
