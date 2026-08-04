@@ -489,21 +489,81 @@
       transform: translateY(0);
     }
 
-    .mouth-zone {
+    .serving-plate {
       position: absolute;
       z-index: 6;
-      top: 66%;
+      bottom: 4px;
       left: 50%;
-      width: 128px;
-      height: 88px;
-      transform: translate(-50%, -50%);
+      width: 148px;
+      height: 78px;
+      display: grid;
+      place-items: center;
+      transform: translateX(-50%);
+      border: 4px solid var(--line);
       border-radius: 50%;
+      background: #fff;
+      box-shadow: inset 0 0 0 11px rgba(53,119,240,.12), 5px 5px 0 rgba(30,31,37,.9);
+      pointer-events: auto;
+    }
+
+    .serving-plate.targeted {
+      transform: translateX(-50%) translateY(-4px) scale(1.05);
+      outline: 4px solid var(--green);
+      outline-offset: 6px;
+    }
+
+    .serving-plate.has-food {
+      animation: platePop .28s ease;
+    }
+
+    .serving-plate svg {
+      width: 58px;
+      height: 58px;
+      overflow: visible;
+    }
+
+    @keyframes platePop {
+      from { transform: translateX(-50%) scale(.8); }
+      to { transform: translateX(-50%) scale(1); }
+    }
+
+    .auto-bite {
+      position: absolute;
+      z-index: 8;
+      left: 50%;
+      bottom: 36px;
+      width: 70px;
+      height: 70px;
+      display: none;
+      place-items: center;
+      transform: translateX(-50%);
       pointer-events: none;
     }
 
-    .mouth-zone.targeted {
-      outline: 4px solid var(--green);
-      outline-offset: 8px;
+    .auto-bite.show {
+      display: grid;
+      animation: biteMove .55s ease forwards;
+    }
+
+    .auto-bite svg {
+      width: 58px;
+      height: 58px;
+      overflow: visible;
+    }
+
+    @keyframes biteMove {
+      0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateX(-50%) translateY(-176px) scale(.62); opacity: 0; }
+    }
+
+    .guest.eating {
+      animation: eating .58s ease;
+    }
+
+    @keyframes eating {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      35% { transform: translateY(8px) rotate(-2deg); }
+      70% { transform: translateY(-4px) rotate(2deg); }
     }
 
     .taste-card {
@@ -700,7 +760,8 @@
           <div class="speech" id="speech">好吃！</div>
           <div class="chair"></div>
           <div class="guest" id="guest"></div>
-          <div class="mouth-zone" id="mouthZone"></div>
+          <div class="auto-bite" id="autoBite"></div>
+          <button class="serving-plate" id="servingPlate" aria-label="客人面前的盘子"></button>
         </div>
 
         <div class="taste-card">
@@ -755,6 +816,8 @@
       dragMoved: false,
       cooking: null,
       ready: null,
+      onPlate: null,
+      eating: false,
       score: 0,
       streak: 0,
       served: 0,
@@ -774,7 +837,8 @@
       timerFill: document.querySelector("#timerFill"),
       servedFood: document.querySelector("#servedFood"),
       guest: document.querySelector("#guest"),
-      mouthZone: document.querySelector("#mouthZone"),
+      servingPlate: document.querySelector("#servingPlate"),
+      autoBite: document.querySelector("#autoBite"),
       speech: document.querySelector("#speech"),
       tasteTitle: document.querySelector("#tasteTitle"),
       tasteTags: document.querySelector("#tasteTags"),
@@ -868,16 +932,16 @@
       if (!state.held) return;
       setPointer(event);
       const overPot = hitTest(els.potZone, state.pointer.x, state.pointer.y);
-      const overMouth = isFeedTarget(state.pointer.x, state.pointer.y);
+      const overPlate = hitTest(els.servingPlate, state.pointer.x, state.pointer.y);
 
-      if (!state.dragMoved && !overPot && !overMouth) return;
+      if (!state.dragMoved && !overPot && !overPlate) return;
 
       if (!state.heldCooked && overPot) {
         cook(state.held);
-      } else if (state.heldCooked && overMouth) {
-        feed(state.held);
+      } else if (state.heldCooked && overPlate) {
+        serveToPlate(state.held);
       } else {
-        toast(state.heldCooked ? "对准嘴巴" : "先放进锅");
+        toast(state.heldCooked ? "放到客人盘子" : "先放进锅");
       }
       clearHeld();
     }
@@ -902,6 +966,42 @@
         els.servedFood.classList.add("ready");
         toast("煮好了");
       }, 1500);
+    }
+
+    function serveToPlate(food) {
+      if (state.eating) {
+        toast("客人正在吃");
+        return;
+      }
+      state.onPlate = food;
+      state.ready = null;
+      els.servedFood.classList.remove("ready");
+      renderServingPlate(food);
+      toast("上菜啦");
+      window.setTimeout(() => autoEat(food), 420);
+    }
+
+    function renderServingPlate(food) {
+      els.servingPlate.innerHTML = food ? foodIcon(food) : "";
+      els.servingPlate.classList.toggle("has-food", !!food);
+    }
+
+    function autoEat(food) {
+      if (!state.onPlate || state.onPlate.id !== food.id) return;
+      state.eating = true;
+      els.autoBite.innerHTML = foodIcon(food);
+      els.autoBite.classList.add("show");
+      els.servingPlate.innerHTML = "";
+      els.servingPlate.classList.remove("has-food");
+      els.guest.classList.remove("eating", "happy", "nope");
+      void els.guest.offsetWidth;
+      els.guest.classList.add("eating");
+      window.setTimeout(() => {
+        els.autoBite.classList.remove("show");
+        state.onPlate = null;
+        state.eating = false;
+        feed(food);
+      }, 560);
     }
 
     function feed(food) {
@@ -931,7 +1031,7 @@
     function react(kind, words) {
       state.guest.mouth = kind === "happy" ? "M82 113c11 19 35 19 46 0" : "M85 122c13-8 27-8 40 0";
       guestSvg(state.guest);
-      els.guest.classList.remove("happy", "nope");
+      els.guest.classList.remove("eating", "happy", "nope");
       void els.guest.offsetWidth;
       els.guest.classList.add(kind);
       els.speech.textContent = words;
@@ -958,7 +1058,7 @@
       els.heldCard.classList.remove("show");
       els.chopsticks.classList.remove("holding");
       els.potZone.classList.remove("targeted");
-      els.mouthZone.classList.remove("targeted");
+      els.servingPlate.classList.remove("targeted");
     }
 
     function setPointer(event) {
@@ -985,22 +1085,12 @@
       els.heldCard.style.left = x + "px";
       els.heldCard.style.top = y + "px";
       els.potZone.classList.toggle("targeted", !!state.held && !state.heldCooked && hitTest(els.potZone, x, y));
-      els.mouthZone.classList.toggle("targeted", !!state.held && state.heldCooked && isFeedTarget(x, y));
+      els.servingPlate.classList.toggle("targeted", !!state.held && state.heldCooked && hitTest(els.servingPlate, x, y));
     }
 
     function hitTest(element, x, y) {
       const rect = element.getBoundingClientRect();
       return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
-    }
-
-    function isFeedTarget(x, y) {
-      if (hitTest(els.mouthZone, x, y)) return true;
-      const rect = els.guest.getBoundingClientRect();
-      const faceLeft = rect.left + rect.width * 0.24;
-      const faceRight = rect.right - rect.width * 0.24;
-      const faceTop = rect.top + rect.height * 0.2;
-      const faceBottom = rect.top + rect.height * 0.62;
-      return x >= faceLeft && x <= faceRight && y >= faceTop && y <= faceBottom;
     }
 
     function toast(message) {
@@ -1046,9 +1136,9 @@
         }
       });
 
-      els.guest.addEventListener("click", () => {
+      els.servingPlate.addEventListener("click", () => {
         if (state.held && state.heldCooked) {
-          feed(state.held);
+          serveToPlate(state.held);
           clearHeld();
         }
       });
