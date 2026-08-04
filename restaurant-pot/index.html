@@ -492,10 +492,10 @@
     .mouth-zone {
       position: absolute;
       z-index: 6;
-      top: 42%;
+      top: 66%;
       left: 50%;
-      width: 70px;
-      height: 48px;
+      width: 128px;
+      height: 88px;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       pointer-events: none;
@@ -751,6 +751,8 @@
       guest: guests[0],
       held: null,
       heldCooked: false,
+      dragStart: null,
+      dragMoved: false,
       cooking: null,
       ready: null,
       score: 0,
@@ -852,6 +854,8 @@
       }
       state.held = food;
       state.heldCooked = cooked;
+      state.dragMoved = false;
+      state.dragStart = event ? pointerFromEvent(event) : { ...state.pointer };
       if (event) setPointer(event);
       els.selectedName.textContent = cooked ? "熟" + food.name : food.name;
       els.heldCard.innerHTML = foodIcon(food) + `<span>${cooked ? "熟" : ""}${food.name}</span>`;
@@ -864,7 +868,9 @@
       if (!state.held) return;
       setPointer(event);
       const overPot = hitTest(els.potZone, state.pointer.x, state.pointer.y);
-      const overMouth = hitTest(els.mouthZone, state.pointer.x, state.pointer.y);
+      const overMouth = isFeedTarget(state.pointer.x, state.pointer.y);
+
+      if (!state.dragMoved && !overPot && !overMouth) return;
 
       if (!state.heldCooked && overPot) {
         cook(state.held);
@@ -946,6 +952,8 @@
     function clearHeld() {
       state.held = null;
       state.heldCooked = false;
+      state.dragStart = null;
+      state.dragMoved = false;
       els.selectedName.textContent = "空筷";
       els.heldCard.classList.remove("show");
       els.chopsticks.classList.remove("holding");
@@ -954,9 +962,20 @@
     }
 
     function setPointer(event) {
+      state.pointer = pointerFromEvent(event);
+      if (state.held && state.dragStart) {
+        const dx = state.pointer.x - state.dragStart.x;
+        const dy = state.pointer.y - state.dragStart.y;
+        if (Math.hypot(dx, dy) > 10) state.dragMoved = true;
+      }
+    }
+
+    function pointerFromEvent(event) {
       const touch = event.touches && event.touches[0];
-      state.pointer.x = touch ? touch.clientX : event.clientX;
-      state.pointer.y = touch ? touch.clientY : event.clientY;
+      return {
+        x: touch ? touch.clientX : event.clientX,
+        y: touch ? touch.clientY : event.clientY
+      };
     }
 
     function moveTools() {
@@ -966,12 +985,22 @@
       els.heldCard.style.left = x + "px";
       els.heldCard.style.top = y + "px";
       els.potZone.classList.toggle("targeted", !!state.held && !state.heldCooked && hitTest(els.potZone, x, y));
-      els.mouthZone.classList.toggle("targeted", !!state.held && state.heldCooked && hitTest(els.mouthZone, x, y));
+      els.mouthZone.classList.toggle("targeted", !!state.held && state.heldCooked && isFeedTarget(x, y));
     }
 
     function hitTest(element, x, y) {
       const rect = element.getBoundingClientRect();
       return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+    }
+
+    function isFeedTarget(x, y) {
+      if (hitTest(els.mouthZone, x, y)) return true;
+      const rect = els.guest.getBoundingClientRect();
+      const faceLeft = rect.left + rect.width * 0.24;
+      const faceRight = rect.right - rect.width * 0.24;
+      const faceTop = rect.top + rect.height * 0.2;
+      const faceBottom = rect.top + rect.height * 0.62;
+      return x >= faceLeft && x <= faceRight && y >= faceTop && y <= faceBottom;
     }
 
     function toast(message) {
