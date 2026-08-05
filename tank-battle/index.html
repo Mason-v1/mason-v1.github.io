@@ -409,6 +409,17 @@
     };
 
     const keys = new Set();
+    const keyMap = {
+      ArrowUp: "up",
+      ArrowDown: "down",
+      ArrowLeft: "left",
+      ArrowRight: "right",
+      KeyW: "up",
+      KeyS: "down",
+      KeyA: "left",
+      KeyD: "right",
+      Space: "fire"
+    };
     const state = {
       running: false,
       last: 0,
@@ -496,10 +507,10 @@
       const p = state.player;
       let mx = 0;
       let my = 0;
-      if (keys.has("ArrowUp") || keys.has("w")) my -= 1;
-      if (keys.has("ArrowDown") || keys.has("s")) my += 1;
-      if (keys.has("ArrowLeft") || keys.has("a")) mx -= 1;
-      if (keys.has("ArrowRight") || keys.has("d")) mx += 1;
+      if (keys.has("up")) my -= 1;
+      if (keys.has("down")) my += 1;
+      if (keys.has("left")) mx -= 1;
+      if (keys.has("right")) mx += 1;
 
       if (mx && my) {
         const keepVertical = p.dir === "up" || p.dir === "down";
@@ -511,7 +522,7 @@
 
       moveTank(p, mx * p.speed * dt, my * p.speed * dt);
       p.fireCooldown = Math.max(0, p.fireCooldown - dt);
-      if (keys.has(" ") || keys.has("Spacebar")) playerFire();
+      if (keys.has("fire")) playerFire();
     }
 
     function moveTank(tank, dx, dy) {
@@ -565,6 +576,7 @@
         enemy.dir = preferHorizontal ? (dx > 0 ? "right" : "left") : (dy > 0 ? "down" : "up");
         const d = dirs[enemy.dir];
         moveTank(enemy, d.x * enemy.speed * dt, d.y * enemy.speed * dt);
+        keepEnemyOffPlayer(enemy, dt);
         enemy.fireCooldown -= dt;
         if (enemy.fireCooldown <= 0) {
           enemyFire(enemy);
@@ -586,14 +598,14 @@
           bullet.dead = true;
           continue;
         }
-        if (state.obstacles.some((obstacle) => pointInRect(bullet.x, bullet.y, obstacle))) {
+        if (state.obstacles.some((obstacle) => circleHitsRect(bullet.x, bullet.y, bullet.size, obstacle))) {
           bullet.dead = true;
           addDebris(bullet.x, bullet.y, "#7a5946", 6);
           continue;
         }
         if (bullet.owner === "player") {
           for (const enemy of state.enemies) {
-            if (pointInRect(bullet.x, bullet.y, tankRect(enemy))) {
+            if (circleHitsRect(bullet.x, bullet.y, bullet.size + 8, tankRect(enemy))) {
               bullet.dead = true;
               enemy.hp -= bullet.damage;
               addDebris(bullet.x, bullet.y, "#f5c94a", 9);
@@ -601,7 +613,7 @@
               break;
             }
           }
-        } else if (pointInRect(bullet.x, bullet.y, tankRect(state.player))) {
+        } else if (circleHitsRect(bullet.x, bullet.y, bullet.size + 10, tankRect(state.player))) {
           bullet.dead = true;
           state.player.hp -= bullet.damage;
           state.shake = 1;
@@ -611,6 +623,22 @@
 
       state.bullets = state.bullets.filter((bullet) => !bullet.dead);
       state.enemies = state.enemies.filter((enemy) => enemy.hp > 0);
+    }
+
+    function keepEnemyOffPlayer(enemy, dt) {
+      const p = state.player;
+      const dx = enemy.x - p.x;
+      const dy = enemy.y - p.y;
+      const minDistance = (p.w + enemy.w) * 0.58;
+      const distance = Math.max(1, Math.hypot(dx, dy));
+      if (distance >= minDistance) return;
+      const push = (minDistance - distance) * 0.5;
+      enemy.x += (dx / distance) * push;
+      enemy.y += (dy / distance) * push;
+      enemy.x = clamp(enemy.x, enemy.w / 2 + 8, canvas.width - enemy.w / 2 - 8);
+      enemy.y = clamp(enemy.y, enemy.h / 2 + 8, canvas.height - enemy.h / 2 - 8);
+      p.hp -= 8 * dt;
+      state.shake = Math.max(state.shake, 0.45);
     }
 
     function updateDebris(dt) {
@@ -868,8 +896,12 @@
       return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
     }
 
-    function pointInRect(x, y, rect) {
-      return x >= rect.x && x <= rect.x + rect.w && y >= rect.y && y <= rect.y + rect.h;
+    function circleHitsRect(x, y, radius, rect) {
+      const closestX = clamp(x, rect.x, rect.x + rect.w);
+      const closestY = clamp(y, rect.y, rect.y + rect.h);
+      const dx = x - closestX;
+      const dy = y - closestY;
+      return dx * dx + dy * dy <= radius * radius;
     }
 
     function dirAngle(dir) {
@@ -896,31 +928,30 @@
 
     function bindKeys() {
       window.addEventListener("keydown", (event) => {
-        const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
-        if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "w", "a", "s", "d", " ", "Spacebar"].includes(key)) {
+        const action = keyMap[event.code] || keyMap[event.key];
+        if (action) {
           event.preventDefault();
-          keys.add(key);
+          keys.add(action);
         }
       });
       window.addEventListener("keyup", (event) => {
-        const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
-        keys.delete(key);
+        const action = keyMap[event.code] || keyMap[event.key];
+        if (action) keys.delete(action);
       });
     }
 
     function bindTouchControls() {
       document.querySelectorAll("[data-dir]").forEach((button) => {
         const dir = button.dataset.dir;
-        const code = { up: "ArrowUp", down: "ArrowDown", left: "ArrowLeft", right: "ArrowRight" }[dir];
         button.addEventListener("pointerdown", (event) => {
           event.preventDefault();
           button.setPointerCapture(event.pointerId);
           button.classList.add("active");
-          keys.add(code);
+          keys.add(dir);
         });
         const release = () => {
           button.classList.remove("active");
-          keys.delete(code);
+          keys.delete(dir);
         };
         button.addEventListener("pointerup", release);
         button.addEventListener("pointercancel", release);
@@ -929,11 +960,11 @@
 
       ui.fireBtn.addEventListener("pointerdown", (event) => {
         event.preventDefault();
-        keys.add(" ");
+        keys.add("fire");
       });
-      ui.fireBtn.addEventListener("pointerup", () => keys.delete(" "));
-      ui.fireBtn.addEventListener("pointercancel", () => keys.delete(" "));
-      ui.fireBtn.addEventListener("pointerleave", () => keys.delete(" "));
+      ui.fireBtn.addEventListener("pointerup", () => keys.delete("fire"));
+      ui.fireBtn.addEventListener("pointercancel", () => keys.delete("fire"));
+      ui.fireBtn.addEventListener("pointerleave", () => keys.delete("fire"));
     }
 
     function boot() {
