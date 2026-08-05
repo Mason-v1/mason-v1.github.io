@@ -462,7 +462,8 @@
         { x: 665, y: 106, w: 92, h: 112 },
         { x: 132, y: 410, w: 148, h: 48 },
         { x: 690, y: 424, w: 132, h: 54 },
-        { x: 428, y: 284, w: 96, h: 40 }
+        { x: 414, y: 72, w: 132, h: 38 },
+        { x: 414, y: 492, w: 132, h: 38 }
       ];
     }
 
@@ -545,8 +546,8 @@
         w: 46,
         h: 56,
         dir: "down",
-        hp: 36 + state.wave * 5,
-        maxHp: 36 + state.wave * 5,
+        hp: 24 + state.wave * 3,
+        maxHp: 24 + state.wave * 3,
         speed: 72 + state.wave * 5,
         fireCooldown: 0.8 + Math.random() * 1.5,
         turnTimer: 0
@@ -627,7 +628,7 @@
     function playerFire() {
       const p = state.player;
       if (p.fireCooldown > 0) return;
-      shoot(p.x, p.y, p.dir, "player", 410, 26, 9);
+      shoot(p.x, p.y, p.dir, "player", 450, 40, 10);
       p.fireCooldown = 0.28;
     }
 
