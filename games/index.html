@@ -73,7 +73,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 18px;
       align-content: center;
     }
@@ -147,6 +147,12 @@
       background:
         linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.46)),
         repeating-linear-gradient(90deg, rgba(245,201,74,.16) 0 28px, rgba(255,122,169,.12) 28px 56px);
+    }
+
+    .tank .visual {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.68), rgba(255,255,255,.42)),
+        repeating-linear-gradient(45deg, rgba(111,171,104,.18) 0 26px, rgba(217,189,117,.2) 26px 52px);
     }
 
     @media (max-width: 800px) {
@@ -241,6 +247,46 @@
         </div>
         <div class="meta">
           <h2>餐厅小锅局</h2>
+          <span class="tag">开玩</span>
+        </div>
+      </a>
+
+      <a class="game-card tank" href="/tank-battle/">
+        <div class="visual">
+          <svg viewBox="0 0 520 360" role="img" aria-label="坦克守卫战">
+            <rect x="32" y="38" width="456" height="284" rx="12" fill="#b9d58a" stroke="#25222b" stroke-width="8"/>
+            <path d="M32 120h456M32 208h456M132 38v284M260 38v284M388 38v284" stroke="#25222b" stroke-width="3" opacity=".16"/>
+            <rect x="72" y="76" width="104" height="40" rx="8" fill="#9b7654" stroke="#25222b" stroke-width="6"/>
+            <rect x="342" y="232" width="104" height="42" rx="8" fill="#9b7654" stroke="#25222b" stroke-width="6"/>
+            <g transform="translate(260 190)">
+              <rect x="-48" y="-58" width="96" height="116" rx="14" fill="#3577f0" stroke="#25222b" stroke-width="8"/>
+              <rect x="-62" y="-50" width="22" height="100" rx="10" fill="#1f5cc8" stroke="#25222b" stroke-width="7"/>
+              <rect x="40" y="-50" width="22" height="100" rx="10" fill="#1f5cc8" stroke="#25222b" stroke-width="7"/>
+              <circle cx="0" cy="-2" r="32" fill="#8fc3ff" stroke="#25222b" stroke-width="7"/>
+              <rect x="-9" y="-92" width="18" height="66" rx="9" fill="#25222b"/>
+              <rect x="-5" y="-92" width="10" height="48" rx="5" fill="#f5c94a"/>
+            </g>
+            <g transform="translate(126 247) scale(.72) rotate(90)">
+              <rect x="-38" y="-46" width="76" height="92" rx="12" fill="#e94f4f" stroke="#25222b" stroke-width="7"/>
+              <rect x="-47" y="-42" width="17" height="84" rx="8" fill="#b92c2c" stroke="#25222b" stroke-width="7"/>
+              <rect x="30" y="-42" width="17" height="84" rx="8" fill="#b92c2c" stroke="#25222b" stroke-width="7"/>
+              <circle cx="0" cy="-2" r="25" fill="#ff9b75" stroke="#25222b" stroke-width="7"/>
+              <rect x="-8" y="-70" width="16" height="54" rx="8" fill="#25222b"/>
+            </g>
+            <g transform="translate(410 112) scale(.72) rotate(-90)">
+              <rect x="-38" y="-46" width="76" height="92" rx="12" fill="#e94f4f" stroke="#25222b" stroke-width="7"/>
+              <rect x="-47" y="-42" width="17" height="84" rx="8" fill="#b92c2c" stroke="#25222b" stroke-width="7"/>
+              <rect x="30" y="-42" width="17" height="84" rx="8" fill="#b92c2c" stroke="#25222b" stroke-width="7"/>
+              <circle cx="0" cy="-2" r="25" fill="#ff9b75" stroke="#25222b" stroke-width="7"/>
+              <rect x="-8" y="-70" width="16" height="54" rx="8" fill="#25222b"/>
+            </g>
+            <circle cx="260" cy="74" r="9" fill="#f5c94a" stroke="#25222b" stroke-width="5"/>
+            <circle cx="202" cy="190" r="7" fill="#25222b"/>
+            <circle cx="324" cy="190" r="7" fill="#25222b"/>
+          </svg>
+        </div>
+        <div class="meta">
+          <h2>坦克守卫战</h2>
           <span class="tag">开玩</span>
         </div>
       </a>

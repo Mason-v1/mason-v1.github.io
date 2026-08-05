@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>坦克守卫战</title>
+  <style>
+    :root {
+      --ink: #181b20;
+      --line: #25222b;
+      --paper: #f8f4e8;
+      --sand: #d9bd75;
+      --grass: #6fab68;
+      --steel: #606b78;
+      --red: #e94f4f;
+      --blue: #3577f0;
+      --yellow: #f5c94a;
+      --green: #31b978;
+      --shadow: 0 20px 46px rgba(18, 22, 30, .18);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: ui-rounded, "SF Pro Rounded", "Microsoft YaHei", system-ui, sans-serif;
+      background:
+        linear-gradient(90deg, rgba(24,27,32,.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(24,27,32,.05) 1px, transparent 1px),
+        linear-gradient(135deg, #f8f4e8 0%, #eaf6ea 48%, #f8eddf 100%);
+      background-size: 30px 30px, 30px 30px, auto;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .app {
+      width: min(1160px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 18px 0 24px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 58px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .stat {
+      min-width: 86px;
+      padding: 9px 12px;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.86);
+      box-shadow: 4px 4px 0 rgba(24,27,32,.92);
+      text-align: center;
+    }
+
+    .stat b {
+      display: block;
+      font-size: 21px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      color: #606672;
+      font-weight: 900;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) minmax(220px, 280px);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .arena-panel,
+    .side-panel {
+      border: 4px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.82);
+      box-shadow: var(--shadow), 7px 7px 0 rgba(24,27,32,.94);
+    }
+
+    .arena-panel {
+      position: relative;
+      overflow: hidden;
+      padding: 12px;
+    }
+
+    canvas {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      display: block;
+      border: 3px solid var(--line);
+      border-radius: 8px;
+      background: #b9d58a;
+      image-rendering: auto;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 15px;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.74);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal {
+      width: min(420px, 92%);
+      padding: 16px;
+      border: 3px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 6px 6px 0 rgba(24,27,32,.94);
+      text-align: center;
+    }
+
+    .modal h2 {
+      margin: 0 0 12px;
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .modal button,
+    .panel-button {
+      min-height: 44px;
+      padding: 9px 12px;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: var(--yellow);
+      box-shadow: 4px 4px 0 rgba(24,27,32,.92);
+      font-weight: 1000;
+    }
+
+    .side-panel {
+      padding: 12px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 1000;
+      text-transform: uppercase;
+    }
+
+    .health-wrap {
+      display: grid;
+      gap: 8px;
+    }
+
+    .bar {
+      height: 20px;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .bar-fill {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--yellow), var(--red));
+      transition: width 120ms ease;
+    }
+
+    .mini-map {
+      aspect-ratio: 1;
+      border: 3px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(24,27,32,.07) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(24,27,32,.07) 1px, transparent 1px),
+        #d8e6a6;
+      background-size: 18px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mini-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border: 2px solid var(--line);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--red);
+    }
+
+    .mini-dot.player {
+      width: 14px;
+      height: 14px;
+      background: var(--blue);
+      z-index: 2;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 126px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .pad {
+      width: 126px;
+      height: 126px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 5px;
+    }
+
+    .ctrl {
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 3px 3px 0 rgba(24,27,32,.9);
+      font-weight: 1000;
+    }
+
+    .ctrl:active,
+    .ctrl.active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 rgba(24,27,32,.9);
+      background: var(--yellow);
+    }
+
+    .up { grid-column: 2; grid-row: 1; }
+    .left { grid-column: 1; grid-row: 2; }
+    .down { grid-column: 2; grid-row: 3; }
+    .right { grid-column: 3; grid-row: 2; }
+
+    .fire {
+      width: 100%;
+      aspect-ratio: 1;
+      border: 3px solid var(--line);
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      box-shadow: 5px 5px 0 rgba(24,27,32,.94);
+      font-size: 18px;
+      font-weight: 1000;
+    }
+
+    .tips {
+      margin: 0;
+      padding: 10px;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 3px 3px 0 rgba(24,27,32,.9);
+      color: #555d68;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 850px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .controls {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .app {
+        width: min(100% - 18px, 540px);
+        padding-top: 12px;
+      }
+
+      header,
+      .side-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        justify-content: stretch;
+      }
+
+      .stat {
+        flex: 1 1 30%;
+      }
+
+      canvas {
+        aspect-ratio: 1 / 1.18;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>坦克守卫战</h1>
+      <div class="stats" aria-label="战斗数据">
+        <div class="stat"><b id="score">0</b><span>击毁</span></div>
+        <div class="stat"><b id="wave">1</b><span>波次</span></div>
+        <div class="stat"><b id="enemyCount">0</b><span>敌人</span></div>
+      </div>
+    </header>
+
+    <section class="layout">
+      <div class="arena-panel">
+        <canvas id="game" width="960" height="600" aria-label="坦克战场"></canvas>
+        <div class="overlay show" id="overlay">
+          <div class="modal">
+            <h2 id="overlayTitle">准备出击</h2>
+            <button id="startBtn">开始战斗</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side-panel">
+        <div class="health-wrap">
+          <p class="section-title"><span>大坦克血量</span><span id="hpText">100%</span></p>
+          <div class="bar" aria-hidden="true"><div class="bar-fill" id="hpFill"></div></div>
+        </div>
+
+        <div>
+          <p class="section-title"><span>雷达</span><span>四面来袭</span></p>
+          <div class="mini-map" id="miniMap"></div>
+        </div>
+
+        <div class="controls" aria-label="触控操作">
+          <div class="pad">
+            <button class="ctrl up" data-dir="up">↑</button>
+            <button class="ctrl left" data-dir="left">←</button>
+            <button class="ctrl down" data-dir="down">↓</button>
+            <button class="ctrl right" data-dir="right">→</button>
+          </div>
+          <button class="fire" id="fireBtn">开火</button>
+        </div>
+
+        <p class="tips">方向键或 WASD 移动并改变炮口方向。空格开火，子弹只会沿上下左右飞行。小坦克会从四边出现并向你射击。</p>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.querySelector("#game");
+    const ctx = canvas.getContext("2d");
+    const ui = {
+      score: document.querySelector("#score"),
+      wave: document.querySelector("#wave"),
+      enemyCount: document.querySelector("#enemyCount"),
+      hpText: document.querySelector("#hpText"),
+      hpFill: document.querySelector("#hpFill"),
+      miniMap: document.querySelector("#miniMap"),
+      overlay: document.querySelector("#overlay"),
+      overlayTitle: document.querySelector("#overlayTitle"),
+      startBtn: document.querySelector("#startBtn"),
+      fireBtn: document.querySelector("#fireBtn")
+    };
+
+    const dirs = {
+      up: { x: 0, y: -1 },
+      down: { x: 0, y: 1 },
+      left: { x: -1, y: 0 },
+      right: { x: 1, y: 0 }
+    };
+
+    const keys = new Set();
+    const state = {
+      running: false,
+      last: 0,
+      score: 0,
+      wave: 1,
+      spawnTimer: 0,
+      shake: 0,
+      flashes: [],
+      player: null,
+      enemies: [],
+      bullets: [],
+      debris: [],
+      obstacles: []
+    };
+
+    function makePlayer() {
+      return {
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        w: 70,
+        h: 86,
+        dir: "up",
+        hp: 100,
+        maxHp: 100,
+        speed: 210,
+        fireCooldown: 0
+      };
+    }
+
+    function resetGame() {
+      state.running = true;
+      state.last = performance.now();
+      state.score = 0;
+      state.wave = 1;
+      state.spawnTimer = 0.25;
+      state.shake = 0;
+      state.flashes = [];
+      state.player = makePlayer();
+      state.enemies = [];
+      state.bullets = [];
+      state.debris = [];
+      state.obstacles = makeObstacles();
+      ui.overlay.classList.remove("show");
+      updateUi();
+      requestAnimationFrame(loop);
+    }
+
+    function makeObstacles() {
+      return [
+        { x: 178, y: 132, w: 112, h: 42 },
+        { x: 665, y: 106, w: 92, h: 112 },
+        { x: 132, y: 410, w: 148, h: 48 },
+        { x: 690, y: 424, w: 132, h: 54 },
+        { x: 428, y: 284, w: 96, h: 40 }
+      ];
+    }
+
+    function loop(now) {
+      if (!state.running) return;
+      const dt = Math.min(0.033, (now - state.last) / 1000);
+      state.last = now;
+      update(dt);
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    function update(dt) {
+      updatePlayer(dt);
+      updateSpawning(dt);
+      updateEnemies(dt);
+      updateBullets(dt);
+      updateDebris(dt);
+      state.shake = Math.max(0, state.shake - dt * 22);
+      if (state.score >= state.wave * 8) {
+        state.wave += 1;
+        state.player.hp = Math.min(state.player.maxHp, state.player.hp + 18);
+        addFlash("wave");
+      }
+      if (state.player.hp <= 0) endGame();
+      updateUi();
+    }
+
+    function updatePlayer(dt) {
+      const p = state.player;
+      let mx = 0;
+      let my = 0;
+      if (keys.has("ArrowUp") || keys.has("w")) my -= 1;
+      if (keys.has("ArrowDown") || keys.has("s")) my += 1;
+      if (keys.has("ArrowLeft") || keys.has("a")) mx -= 1;
+      if (keys.has("ArrowRight") || keys.has("d")) mx += 1;
+
+      if (Math.abs(mx) > Math.abs(my)) p.dir = mx > 0 ? "right" : "left";
+      if (Math.abs(my) > 0) p.dir = my > 0 ? "down" : "up";
+      if (mx && my) {
+        mx *= 0.707;
+        my *= 0.707;
+      }
+
+      moveTank(p, mx * p.speed * dt, my * p.speed * dt);
+      p.fireCooldown = Math.max(0, p.fireCooldown - dt);
+      if (keys.has(" ") || keys.has("Spacebar")) playerFire();
+    }
+
+    function moveTank(tank, dx, dy) {
+      if (!dx && !dy) return;
+      const oldX = tank.x;
+      tank.x = clamp(tank.x + dx, tank.w / 2 + 8, canvas.width - tank.w / 2 - 8);
+      if (hitsObstacle(tank)) tank.x = oldX;
+      const oldY = tank.y;
+      tank.y = clamp(tank.y + dy, tank.h / 2 + 8, canvas.height - tank.h / 2 - 8);
+      if (hitsObstacle(tank)) tank.y = oldY;
+    }
+
+    function hitsObstacle(tank) {
+      const rect = tankRect(tank);
+      return state.obstacles.some((obstacle) => rectsOverlap(rect, obstacle));
+    }
+
+    function updateSpawning(dt) {
+      state.spawnTimer -= dt;
+      const maxEnemies = Math.min(14, 4 + state.wave * 2);
+      if (state.spawnTimer <= 0 && state.enemies.length < maxEnemies) {
+        spawnEnemy();
+        state.spawnTimer = Math.max(0.65, 2.2 - state.wave * 0.16);
+      }
+    }
+
+    function spawnEnemy() {
+      const edge = Math.floor(Math.random() * 4);
+      const margin = 42;
+      const enemy = {
+        x: edge === 1 ? canvas.width + margin : edge === 3 ? -margin : 70 + Math.random() * (canvas.width - 140),
+        y: edge === 0 ? -margin : edge === 2 ? canvas.height + margin : 70 + Math.random() * (canvas.height - 140),
+        w: 46,
+        h: 56,
+        dir: "down",
+        hp: 36 + state.wave * 5,
+        maxHp: 36 + state.wave * 5,
+        speed: 72 + state.wave * 5,
+        fireCooldown: 0.8 + Math.random() * 1.5,
+        turnTimer: 0
+      };
+      state.enemies.push(enemy);
+    }
+
+    function updateEnemies(dt) {
+      for (const enemy of state.enemies) {
+        const p = state.player;
+        const dx = p.x - enemy.x;
+        const dy = p.y - enemy.y;
+        const preferHorizontal = Math.abs(dx) > Math.abs(dy);
+        enemy.dir = preferHorizontal ? (dx > 0 ? "right" : "left") : (dy > 0 ? "down" : "up");
+        const d = dirs[enemy.dir];
+        moveTank(enemy, d.x * enemy.speed * dt, d.y * enemy.speed * dt);
+        enemy.fireCooldown -= dt;
+        if (enemy.fireCooldown <= 0) {
+          enemyFire(enemy);
+          enemy.fireCooldown = Math.max(0.7, 1.8 - state.wave * 0.08) + Math.random() * 0.65;
+        }
+      }
+    }
+
+    function updateBullets(dt) {
+      for (const bullet of state.bullets) {
+        bullet.x += bullet.vx * dt;
+        bullet.y += bullet.vy * dt;
+        bullet.life -= dt;
+      }
+
+      for (const bullet of state.bullets) {
+        if (bullet.dead) continue;
+        if (bullet.x < -20 || bullet.x > canvas.width + 20 || bullet.y < -20 || bullet.y > canvas.height + 20 || bullet.life <= 0) {
+          bullet.dead = true;
+          continue;
+        }
+        if (state.obstacles.some((obstacle) => pointInRect(bullet.x, bullet.y, obstacle))) {
+          bullet.dead = true;
+          addDebris(bullet.x, bullet.y, "#7a5946", 6);
+          continue;
+        }
+        if (bullet.owner === "player") {
+          for (const enemy of state.enemies) {
+            if (pointInRect(bullet.x, bullet.y, tankRect(enemy))) {
+              bullet.dead = true;
+              enemy.hp -= bullet.damage;
+              addDebris(bullet.x, bullet.y, "#f5c94a", 9);
+              if (enemy.hp <= 0) destroyEnemy(enemy);
+              break;
+            }
+          }
+        } else if (pointInRect(bullet.x, bullet.y, tankRect(state.player))) {
+          bullet.dead = true;
+          state.player.hp -= bullet.damage;
+          state.shake = 1;
+          addDebris(bullet.x, bullet.y, "#e94f4f", 10);
+        }
+      }
+
+      state.bullets = state.bullets.filter((bullet) => !bullet.dead);
+      state.enemies = state.enemies.filter((enemy) => enemy.hp > 0);
+    }
+
+    function updateDebris(dt) {
+      for (const bit of state.debris) {
+        bit.x += bit.vx * dt;
+        bit.y += bit.vy * dt;
+        bit.life -= dt;
+      }
+      state.debris = state.debris.filter((bit) => bit.life > 0);
+      state.flashes = state.flashes.filter((flash) => {
+        flash.life -= dt;
+        return flash.life > 0;
+      });
+    }
+
+    function playerFire() {
+      const p = state.player;
+      if (p.fireCooldown > 0) return;
+      shoot(p.x, p.y, p.dir, "player", 410, 26, 9);
+      p.fireCooldown = 0.28;
+    }
+
+    function enemyFire(enemy) {
+      shoot(enemy.x, enemy.y, enemy.dir, "enemy", 270, 12 + state.wave * 0.8, 6);
+    }
+
+    function shoot(x, y, dir, owner, speed, damage, size) {
+      const d = dirs[dir];
+      const offset = owner === "player" ? 46 : 32;
+      state.bullets.push({
+        x: x + d.x * offset,
+        y: y + d.y * offset,
+        vx: d.x * speed,
+        vy: d.y * speed,
+        owner,
+        dir,
+        damage,
+        size,
+        life: 2.4
+      });
+      addFlash(owner, x + d.x * offset, y + d.y * offset);
+    }
+
+    function destroyEnemy(enemy) {
+      state.score += 1;
+      enemy.hp = 0;
+      addDebris(enemy.x, enemy.y, "#e94f4f", 24);
+      addDebris(enemy.x, enemy.y, "#25222b", 12);
+    }
+
+    function endGame() {
+      state.running = false;
+      ui.overlayTitle.textContent = "基地失守";
+      ui.startBtn.textContent = "再来一局";
+      ui.overlay.classList.add("show");
+    }
+
+    function draw() {
+      ctx.save();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (state.shake > 0) {
+        ctx.translate((Math.random() - 0.5) * state.shake * 7, (Math.random() - 0.5) * state.shake * 7);
+      }
+      drawGround();
+      drawObstacles();
+      for (const bullet of state.bullets) drawBullet(bullet);
+      for (const enemy of state.enemies) drawTank(enemy, false);
+      drawTank(state.player, true);
+      for (const bit of state.debris) drawDebris(bit);
+      for (const flash of state.flashes) drawFlash(flash);
+      ctx.restore();
+    }
+
+    function drawGround() {
+      ctx.fillStyle = "#b9d58a";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = "rgba(37,34,43,.08)";
+      ctx.lineWidth = 2;
+      for (let x = 0; x <= canvas.width; x += 48) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      for (let y = 0; y <= canvas.height; y += 48) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+      ctx.fillStyle = "rgba(217,189,117,.42)";
+      for (let i = 0; i < 20; i += 1) {
+        const x = (i * 97) % canvas.width;
+        const y = (i * 151) % canvas.height;
+        roundedRect(x, y, 42, 10, 5);
+        ctx.fill();
+      }
+    }
+
+    function drawObstacles() {
+      for (const obstacle of state.obstacles) {
+        ctx.fillStyle = "#9b7654";
+        roundedRect(obstacle.x, obstacle.y, obstacle.w, obstacle.h, 6);
+        ctx.fill();
+        ctx.strokeStyle = "#25222b";
+        ctx.lineWidth = 4;
+        ctx.stroke();
+        ctx.fillStyle = "rgba(255,255,255,.18)";
+        ctx.fillRect(obstacle.x + 8, obstacle.y + 8, obstacle.w - 16, 8);
+      }
+    }
+
+    function drawTank(tank, isPlayer) {
+      const scale = isPlayer ? 1 : 0.72;
+      ctx.save();
+      ctx.translate(tank.x, tank.y);
+      ctx.rotate(dirAngle(tank.dir));
+      ctx.scale(scale, scale);
+
+      ctx.fillStyle = isPlayer ? "#3577f0" : "#e94f4f";
+      ctx.strokeStyle = "#25222b";
+      ctx.lineWidth = 7;
+      roundedRect(-38, -46, 76, 92, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = isPlayer ? "#1f5cc8" : "#b92c2c";
+      roundedRect(-47, -42, 17, 84, 8);
+      ctx.fill();
+      ctx.stroke();
+      roundedRect(30, -42, 17, 84, 8);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = isPlayer ? "#8fc3ff" : "#ff9b75";
+      ctx.beginPath();
+      ctx.arc(0, -2, 25, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = "#25222b";
+      roundedRect(-8, -70, 16, 54, 8);
+      ctx.fill();
+      ctx.fillStyle = isPlayer ? "#f5c94a" : "#fff";
+      roundedRect(-4, -72, 8, 38, 4);
+      ctx.fill();
+
+      ctx.restore();
+      drawHealth(tank, isPlayer);
+    }
+
+    function drawHealth(tank, isPlayer) {
+      const width = isPlayer ? 76 : 48;
+      const y = tank.y - (isPlayer ? 64 : 46);
+      ctx.fillStyle = "#fff";
+      roundedRect(tank.x - width / 2, y, width, 10, 5);
+      ctx.fill();
+      ctx.strokeStyle = "#25222b";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      ctx.fillStyle = isPlayer ? "#31b978" : "#e94f4f";
+      roundedRect(tank.x - width / 2 + 2, y + 2, (width - 4) * Math.max(0, tank.hp / tank.maxHp), 6, 3);
+      ctx.fill();
+    }
+
+    function drawBullet(bullet) {
+      ctx.save();
+      ctx.translate(bullet.x, bullet.y);
+      ctx.rotate(dirAngle(bullet.dir));
+      ctx.fillStyle = bullet.owner === "player" ? "#f5c94a" : "#25222b";
+      ctx.strokeStyle = "#25222b";
+      ctx.lineWidth = 3;
+      roundedRect(-bullet.size / 2, -bullet.size, bullet.size, bullet.size * 2, bullet.size / 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawDebris(bit) {
+      ctx.globalAlpha = Math.max(0, bit.life / bit.maxLife);
+      ctx.fillStyle = bit.color;
+      ctx.beginPath();
+      ctx.arc(bit.x, bit.y, bit.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    function drawFlash(flash) {
+      if (flash.kind === "wave") {
+        ctx.fillStyle = `rgba(245,201,74,${flash.life * 0.18})`;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        return;
+      }
+      ctx.fillStyle = flash.kind === "player" ? "#f5c94a" : "#ff7a72";
+      ctx.globalAlpha = Math.max(0, flash.life * 3);
+      ctx.beginPath();
+      ctx.arc(flash.x, flash.y, 16 * flash.life * 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    function addDebris(x, y, color, count) {
+      for (let i = 0; i < count; i += 1) {
+        const a = Math.random() * Math.PI * 2;
+        const s = 40 + Math.random() * 180;
+        state.debris.push({
+          x,
+          y,
+          vx: Math.cos(a) * s,
+          vy: Math.sin(a) * s,
+          r: 2 + Math.random() * 4,
+          color,
+          life: 0.45 + Math.random() * 0.4,
+          maxLife: 0.85
+        });
+      }
+    }
+
+    function addFlash(kind, x = 0, y = 0) {
+      state.flashes.push({ kind, x, y, life: kind === "wave" ? 0.8 : 0.22 });
+    }
+
+    function updateUi() {
+      ui.score.textContent = state.score;
+      ui.wave.textContent = state.wave;
+      ui.enemyCount.textContent = state.enemies.length;
+      const hp = Math.max(0, Math.round(state.player.hp));
+      ui.hpText.textContent = hp + "%";
+      ui.hpFill.style.width = hp + "%";
+      drawMiniMap();
+    }
+
+    function drawMiniMap() {
+      ui.miniMap.innerHTML = "";
+      const items = [{ ...state.player, player: true }, ...state.enemies];
+      for (const item of items) {
+        const dot = document.createElement("span");
+        dot.className = item.player ? "mini-dot player" : "mini-dot";
+        dot.style.left = clamp(item.x / canvas.width * 100, 2, 98) + "%";
+        dot.style.top = clamp(item.y / canvas.height * 100, 2, 98) + "%";
+        ui.miniMap.appendChild(dot);
+      }
+    }
+
+    function tankRect(tank) {
+      return {
+        x: tank.x - tank.w / 2,
+        y: tank.y - tank.h / 2,
+        w: tank.w,
+        h: tank.h
+      };
+    }
+
+    function rectsOverlap(a, b) {
+      return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+    }
+
+    function pointInRect(x, y, rect) {
+      return x >= rect.x && x <= rect.x + rect.w && y >= rect.y && y <= rect.y + rect.h;
+    }
+
+    function dirAngle(dir) {
+      return { up: 0, right: Math.PI / 2, down: Math.PI, left: -Math.PI / 2 }[dir];
+    }
+
+    function roundedRect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function bindKeys() {
+      window.addEventListener("keydown", (event) => {
+        const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+        if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "w", "a", "s", "d", " ", "Spacebar"].includes(key)) {
+          event.preventDefault();
+          keys.add(key);
+        }
+      });
+      window.addEventListener("keyup", (event) => {
+        const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+        keys.delete(key);
+      });
+    }
+
+    function bindTouchControls() {
+      document.querySelectorAll("[data-dir]").forEach((button) => {
+        const dir = button.dataset.dir;
+        const code = { up: "ArrowUp", down: "ArrowDown", left: "ArrowLeft", right: "ArrowRight" }[dir];
+        button.addEventListener("pointerdown", (event) => {
+          event.preventDefault();
+          button.setPointerCapture(event.pointerId);
+          button.classList.add("active");
+          keys.add(code);
+        });
+        const release = () => {
+          button.classList.remove("active");
+          keys.delete(code);
+        };
+        button.addEventListener("pointerup", release);
+        button.addEventListener("pointercancel", release);
+        button.addEventListener("pointerleave", release);
+      });
+
+      ui.fireBtn.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        keys.add(" ");
+      });
+      ui.fireBtn.addEventListener("pointerup", () => keys.delete(" "));
+      ui.fireBtn.addEventListener("pointercancel", () => keys.delete(" "));
+      ui.fireBtn.addEventListener("pointerleave", () => keys.delete(" "));
+    }
+
+    function boot() {
+      state.player = makePlayer();
+      state.obstacles = makeObstacles();
+      bindKeys();
+      bindTouchControls();
+      ui.startBtn.addEventListener("click", resetGame);
+      draw();
+      updateUi();
+    }
+
+    boot();
+  </script>
+</body>
+</html>
