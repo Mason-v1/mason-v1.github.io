@@ -501,12 +501,13 @@
       if (keys.has("ArrowLeft") || keys.has("a")) mx -= 1;
       if (keys.has("ArrowRight") || keys.has("d")) mx += 1;
 
-      if (Math.abs(mx) > Math.abs(my)) p.dir = mx > 0 ? "right" : "left";
-      if (Math.abs(my) > 0) p.dir = my > 0 ? "down" : "up";
       if (mx && my) {
-        mx *= 0.707;
-        my *= 0.707;
+        const keepVertical = p.dir === "up" || p.dir === "down";
+        if (keepVertical) mx = 0;
+        else my = 0;
       }
+      if (mx) p.dir = mx > 0 ? "right" : "left";
+      if (my) p.dir = my > 0 ? "down" : "up";
 
       moveTank(p, mx * p.speed * dt, my * p.speed * dt);
       p.fireCooldown = Math.max(0, p.fireCooldown - dt);
