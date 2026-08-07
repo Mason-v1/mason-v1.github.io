@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mason | Apple Platform Products</title>
+    <title>MasonApps | Apple Platform Products</title>
     <meta name="description" content="Mason 的 Apple 平台产品主页，展示 Rovo Cam、LiveToFrame、PhotoFramify 等 iOS 与 macOS 应用。">
     <meta name="theme-color" content="#f7fbf8">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260807-carousel-loop">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&amp;family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
 <body>
     <header class="site-header">
         <section class="nav-shell">
-            <a class="wordmark" href="#top">mason.</a>
+            <a class="wordmark" href="#top">MasonApps</a>
             <nav class="social-nav" aria-label="社交链接">
                 <a href="https://github.com/Mason-v1" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.28 2.75 1.05A9.25 9.25 0 0 1 12 6.99c.85 0 1.7.12 2.5.34 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.71 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.95.68 1.92 0 1.38-.01 2.5-.01 2.84 0 .27.18.59.69.49A10.07 10.07 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/></svg>
@@ -33,7 +33,7 @@
     <main id="top">
         <section class="hero section-shell">
             <div class="hero-copy">
-                <h1>Mason Zhang</h1>
+                <h1>Mason</h1>
                 <h2>Fresh little tools for Apple platforms.</h2>
                 <p>
                     我做一些清爽、顺手、面向真实场景的 iOS / macOS 产品。现在重点在相机、Live Photo
@@ -46,7 +46,7 @@
             </div>
             <div class="hero-stack" aria-label="主推产品">
                 <a class="mini-product" href="https://apps.apple.com/app/id6786212021" target="_blank" rel="noopener noreferrer">
-                    <span class="letter-icon">RC</span>
+                    <img src="assets/images/app-icons/rovocam.jpg" alt="Rovo Cam app icon">
                     <span>
                         <strong>Rovo Cam</strong>
                         <small>Apple ID: 6786212021</small>
@@ -78,7 +78,7 @@
             <div class="featured-grid">
                 <article class="feature-card feature-card-large">
                     <a href="https://apps.apple.com/app/id6786212021" target="_blank" rel="noopener noreferrer">
-                        <span class="letter-icon feature-icon">RC</span>
+                        <img class="feature-icon" src="assets/images/app-icons/rovocam.jpg" alt="Rovo Cam app icon">
                         <span class="product-meta">iOS camera tool · Apple ID: 6786212021</span>
                         <strong>Rovo Cam</strong>
                         <small>把拍摄体验做得更直接、更干净，减少设置负担，留下最常用的相机动作。</small>
@@ -102,76 +102,131 @@
                 </article>
             </div>
 
-            <details class="product-drawer">
-                <summary>
-                    <span>
-                        <strong>All products</strong>
-                        <small>主推产品在前，其余产品保持可见但降低视觉权重。</small>
-                    </span>
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                </summary>
-                <div class="drawer-panel">
-                    <a class="drawer-row priority" href="https://apps.apple.com/app/id6786212021" target="_blank" rel="noopener noreferrer">
-                        <span class="letter-icon drawer-icon">RC</span>
+            <section class="product-carousel" aria-label="All products">
+                <div class="carousel-heading">
+                    <h3>All products</h3>
+                </div>
+                <div class="carousel-track">
+                    <a class="carousel-row priority" href="https://apps.apple.com/app/id6786212021" target="_blank" rel="noopener noreferrer">
+                        <img class="carousel-icon" src="assets/images/app-icons/rovocam.jpg" alt="Rovo Cam app icon" width="46" height="46">
                         <span>
                             <strong>Rovo Cam</strong>
                             <small>Apple ID: 6786212021</small>
                         </span>
                         <em>Featured</em>
                     </a>
-                    <a class="drawer-row priority" href="https://apps.apple.com/app/id6757419019" target="_blank" rel="noopener noreferrer">
-                        <img class="drawer-icon" src="assets/images/app-icons/livetoframe.jpg" alt="LiveToFrame app icon">
+                    <a class="carousel-row priority" href="https://apps.apple.com/app/id6757419019" target="_blank" rel="noopener noreferrer">
+                        <img class="carousel-icon" src="assets/images/app-icons/livetoframe.jpg" alt="LiveToFrame app icon" width="46" height="46">
                         <span>
                             <strong>LiveToFrame</strong>
                             <small>Live Photo moments into framed memories</small>
                         </span>
                         <em>Featured</em>
                     </a>
-                    <a class="drawer-row priority" href="https://apps.apple.com/app/id6755989422" target="_blank" rel="noopener noreferrer">
-                        <img class="drawer-icon" src="assets/images/app-icons/photoframify.jpg" alt="PhotoFramify app icon">
+                    <a class="carousel-row priority" href="https://apps.apple.com/app/id6755989422" target="_blank" rel="noopener noreferrer">
+                        <img class="carousel-icon" src="assets/images/app-icons/photoframify.jpg" alt="PhotoFramify app icon" width="46" height="46">
                         <span>
                             <strong>PhotoFramify</strong>
                             <small>Photo frames, watermarks and collage layouts</small>
                         </span>
                         <em>Featured</em>
                     </a>
-                    <a class="drawer-row muted" href="https://apps.apple.com/app/id6773276227" target="_blank" rel="noopener noreferrer">
-                        <img class="drawer-icon" src="assets/images/app-icons/photo-collage-generator.jpg" alt="Photo Collage Generator app icon">
+                    <a class="carousel-row muted" href="https://apps.apple.com/app/id6773276227" target="_blank" rel="noopener noreferrer">
+                        <img class="carousel-icon" src="assets/images/app-icons/photo-collage-generator.jpg" alt="Photo Collage Generator app icon" width="46" height="46">
                         <span>
                             <strong>Photo Collage Generator</strong>
                             <small>Collage, template and grid-cut workflow</small>
                         </span>
                     </a>
-                    <a class="drawer-row muted" href="https://apps.apple.com/app/id6757922905" target="_blank" rel="noopener noreferrer">
-                        <img class="drawer-icon" src="assets/images/app-icons/didmore.jpg" alt="DidMore app icon">
+                    <a class="carousel-row muted" href="https://apps.apple.com/app/id6757922905" target="_blank" rel="noopener noreferrer">
+                        <img class="carousel-icon" src="assets/images/app-icons/didmore.jpg" alt="DidMore app icon" width="46" height="46">
                         <span>
                             <strong>DidMore</strong>
                             <small>轻量习惯记录，把坚持变成低压力反馈。</small>
                         </span>
                     </a>
-                    <a class="drawer-row muted" href="https://apps.apple.com/app/id6759697246" target="_blank" rel="noopener noreferrer">
-                        <img class="drawer-icon" src="assets/images/app-icons/emotify.jpg" alt="Emotify app icon">
+                    <a class="carousel-row muted" href="https://apps.apple.com/app/id6759697246" target="_blank" rel="noopener noreferrer">
+                        <img class="carousel-icon" src="assets/images/app-icons/emotify.jpg" alt="Emotify app icon" width="46" height="46">
                         <span>
                             <strong>Emotify</strong>
                             <small>更轻的 meme 与表情内容创作工具。</small>
                         </span>
                     </a>
-                    <a class="drawer-row muted" href="https://apps.apple.com/app/id6779545464" target="_blank" rel="noopener noreferrer">
-                        <img class="drawer-icon" src="assets/images/app-icons/liply.jpg" alt="Liply app icon">
+                    <a class="carousel-row muted" href="https://apps.apple.com/app/id6779545464" target="_blank" rel="noopener noreferrer">
+                        <img class="carousel-icon" src="assets/images/app-icons/liply.jpg" alt="Liply app icon" width="46" height="46">
                         <span>
                             <strong>Liply</strong>
                             <small>AI 口红试色镜，实时预览和收藏适合自己的色号。</small>
                         </span>
                     </a>
-                    <a class="drawer-row muted" href="https://apps.apple.com/app/id6783653531" target="_blank" rel="noopener noreferrer">
-                        <img class="drawer-icon" src="assets/images/app-icons/lift.png" alt="Lift app icon">
+                    <a class="carousel-row muted" href="https://apps.apple.com/app/id6783653531" target="_blank" rel="noopener noreferrer">
+                        <img class="carousel-icon" src="assets/images/app-icons/lift.png" alt="Lift app icon" width="46" height="46">
+                        <span>
+                            <strong>Lift</strong>
+                            <small>简洁的健身训练记录，专注动作、重量和进步轨迹。</small>
+                        </span>
+                    </a>
+                    <a class="carousel-row priority" href="https://apps.apple.com/app/id6786212021" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                        <img class="carousel-icon" src="assets/images/app-icons/rovocam.jpg" alt="" width="46" height="46">
+                        <span>
+                            <strong>Rovo Cam</strong>
+                            <small>Apple ID: 6786212021</small>
+                        </span>
+                        <em>Featured</em>
+                    </a>
+                    <a class="carousel-row priority" href="https://apps.apple.com/app/id6757419019" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                        <img class="carousel-icon" src="assets/images/app-icons/livetoframe.jpg" alt="" width="46" height="46">
+                        <span>
+                            <strong>LiveToFrame</strong>
+                            <small>Live Photo moments into framed memories</small>
+                        </span>
+                        <em>Featured</em>
+                    </a>
+                    <a class="carousel-row priority" href="https://apps.apple.com/app/id6755989422" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                        <img class="carousel-icon" src="assets/images/app-icons/photoframify.jpg" alt="" width="46" height="46">
+                        <span>
+                            <strong>PhotoFramify</strong>
+                            <small>Photo frames, watermarks and collage layouts</small>
+                        </span>
+                        <em>Featured</em>
+                    </a>
+                    <a class="carousel-row muted" href="https://apps.apple.com/app/id6773276227" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                        <img class="carousel-icon" src="assets/images/app-icons/photo-collage-generator.jpg" alt="" width="46" height="46">
+                        <span>
+                            <strong>Photo Collage Generator</strong>
+                            <small>Collage, template and grid-cut workflow</small>
+                        </span>
+                    </a>
+                    <a class="carousel-row muted" href="https://apps.apple.com/app/id6757922905" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                        <img class="carousel-icon" src="assets/images/app-icons/didmore.jpg" alt="" width="46" height="46">
+                        <span>
+                            <strong>DidMore</strong>
+                            <small>轻量习惯记录，把坚持变成低压力反馈。</small>
+                        </span>
+                    </a>
+                    <a class="carousel-row muted" href="https://apps.apple.com/app/id6759697246" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                        <img class="carousel-icon" src="assets/images/app-icons/emotify.jpg" alt="" width="46" height="46">
+                        <span>
+                            <strong>Emotify</strong>
+                            <small>更轻的 meme 与表情内容创作工具。</small>
+                        </span>
+                    </a>
+                    <a class="carousel-row muted" href="https://apps.apple.com/app/id6779545464" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                        <img class="carousel-icon" src="assets/images/app-icons/liply.jpg" alt="" width="46" height="46">
+                        <span>
+                            <strong>Liply</strong>
+                            <small>AI 口红试色镜，实时预览和收藏适合自己的色号。</small>
+                        </span>
+                    </a>
+                    <a class="carousel-row muted" href="https://apps.apple.com/app/id6783653531" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
+                        <img class="carousel-icon" src="assets/images/app-icons/lift.png" alt="" width="46" height="46">
                         <span>
                             <strong>Lift</strong>
                             <small>简洁的健身训练记录，专注动作、重量和进步轨迹。</small>
                         </span>
                     </a>
                 </div>
-            </details>
+            </section>
         </section>
 
         <section class="section-shell contact-section" id="contact">
@@ -206,7 +261,7 @@
 
     <footer class="footer">
         <section class="section-shell">
-            <p>© 2026, Mason Zhang</p>
+            <p>© 2026, Mason</p>
         </section>
     </footer>
 </body>

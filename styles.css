@@ -46,7 +46,7 @@ a {
 }
 
 a:focus-visible,
-summary:focus-visible {
+a.carousel-row:focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 4px;
 }
@@ -166,7 +166,7 @@ main {
 .section-heading h2,
 .mini-product strong,
 .feature-card strong,
-.drawer-row strong,
+.carousel-row strong,
 .contact-card strong {
     font-family: var(--font-heading);
 }
@@ -290,7 +290,7 @@ main {
 }
 
 .mini-product strong,
-.drawer-row strong,
+.carousel-row strong,
 .contact-card strong {
     display: block;
     font-size: 1rem;
@@ -298,7 +298,7 @@ main {
 }
 
 .mini-product small,
-.drawer-row small,
+.carousel-row small,
 .contact-card small {
     display: block;
     margin-top: 3px;
@@ -404,7 +404,10 @@ main {
     line-height: 1.7;
 }
 
-.product-drawer {
+.product-carousel {
+    --carousel-card-width: 320px;
+    --carousel-gap: 10px;
+    --carousel-columns-per-set: 4;
     margin-top: 18px;
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -412,92 +415,72 @@ main {
     overflow: hidden;
 }
 
-.product-drawer summary {
-    min-height: 76px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 24px;
-    gap: 14px;
-    align-items: center;
-    cursor: pointer;
-    list-style: none;
-    padding: 16px 18px;
+.carousel-heading {
+    padding: 16px 18px 6px;
 }
 
-.product-drawer summary::-webkit-details-marker {
-    display: none;
-}
-
-.product-drawer summary svg {
-    width: 20px;
-    height: 20px;
-    color: var(--primary);
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transition: transform 180ms ease;
-}
-
-.product-drawer[open] summary svg {
-    transform: rotate(180deg);
-}
-
-.product-drawer summary strong {
-    display: block;
+.carousel-heading h3 {
     font-family: var(--font-heading);
     font-size: 1.08rem;
+    line-height: 1.2;
 }
 
-.product-drawer summary small {
-    display: block;
-    margin-top: 4px;
-    color: var(--muted);
-    font-size: 0.84rem;
-    line-height: 1.45;
-}
-
-.drawer-panel {
+.carousel-track {
     display: grid;
-    gap: 8px;
-    border-top: 1px solid var(--border);
-    padding: 12px;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--carousel-card-width);
+    grid-template-rows: repeat(2, 78px);
+    width: max-content;
+    gap: var(--carousel-gap);
+    overflow: visible;
+    padding: 10px 12px 12px;
+    animation: carouselLoop 28s linear infinite;
+    will-change: transform;
 }
 
-.drawer-row {
+.product-carousel:hover .carousel-track,
+.product-carousel:focus-within .carousel-track {
+    animation-play-state: paused;
+}
+
+.carousel-row {
     display: grid;
     grid-template-columns: 46px minmax(0, 1fr) auto;
     gap: 13px;
     align-items: center;
+    height: 78px;
+    min-width: 0;
     border-radius: 8px;
+    background: rgba(255, 255, 255, 0.78);
     padding: 10px;
-    transition: background-color 160ms ease;
+    transition: background-color 160ms ease, transform 160ms ease;
 }
 
-.drawer-row:hover {
+.carousel-row:hover {
     background: var(--soft);
+    transform: translateY(-1px);
 }
 
-.drawer-row.muted {
+.carousel-row.muted {
     opacity: 0.72;
 }
 
-.drawer-row.muted:hover {
+.carousel-row.muted:hover {
     opacity: 1;
 }
 
-.drawer-icon {
-    width: 46px;
-    height: 46px;
+.carousel-icon {
+    width: 46px !important;
+    height: 46px !important;
+    max-width: 46px;
+    max-height: 46px;
+    display: block;
+    flex: 0 0 46px;
     border-radius: 10px;
     object-fit: cover;
 }
 
-.letter-icon.drawer-icon {
-    font-size: 0.82rem;
-}
-
-.drawer-row em {
+.carousel-row em {
     border: 1px solid rgba(47, 138, 92, 0.18);
     border-radius: 999px;
     background: var(--accent);
@@ -573,6 +556,15 @@ main {
     color: var(--muted);
     font-family: var(--font-heading);
     font-size: 0.9rem;
+}
+
+@keyframes carouselLoop {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-1 * var(--carousel-columns-per-set) * (var(--carousel-card-width) + var(--carousel-gap))));
+    }
 }
 
 @media (max-width: 900px) {
@@ -656,7 +648,7 @@ main {
     }
 
     .mini-product,
-    .drawer-row {
+    .carousel-row {
         grid-template-columns: 46px minmax(0, 1fr);
     }
 
@@ -667,7 +659,15 @@ main {
         border-radius: 10px;
     }
 
-    .drawer-row em {
+    .carousel-track {
+        grid-auto-columns: var(--carousel-card-width);
+    }
+
+    .product-carousel {
+        --carousel-card-width: 82vw;
+    }
+
+    .carousel-row em {
         grid-column: 2;
         width: fit-content;
     }
@@ -689,5 +689,10 @@ main {
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
         transition-duration: 0.001ms !important;
+    }
+
+    .carousel-track {
+        animation: none !important;
+        transform: none !important;
     }
 }

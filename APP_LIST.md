@@ -1,12 +1,12 @@
 # Mason Apps List
 
-这个文件用于维护当前正式列入主页和 App Store 展示口径的产品信息。TinyLingo 暂不列入，它只是给小孩子玩的内部小项目。
+这个文件用于维护当前正式列入主页和 App Store 展示口径的产品信息。
 
 ## Featured Apps
 
 | App | App Store ID | Link | Positioning | Icon | Privacy |
 | --- | --- | --- | --- | --- | --- |
-| Rovo Cam | 6786212021 | https://apps.apple.com/app/id6786212021 | 带构图引导的相机工具，主推产品。 | 暂缺本地图标 | `privacy/rovocam/privacy_zh.html`, `privacy/rovocam/privacy_en.html` |
+| Rovo Cam | 6786212021 | https://apps.apple.com/app/id6786212021 | 带构图引导的相机工具，主推产品。 | `assets/images/app-icons/rovocam.jpg` | `privacy/rovocam/privacy_zh.html`, `privacy/rovocam/privacy_en.html` |
 | LiveToFrame | 6757419019 | https://apps.apple.com/app/id6757419019 | Live Photo 片刻提取、装裱和分享。 | `assets/images/app-icons/livetoframe.jpg` | `privacy/liveframe/privacy.html` |
 | PhotoFramify | 6755989422 | https://apps.apple.com/app/id6755989422 | 照片边框、水印、拼贴和发布图工具。 | `assets/images/app-icons/photoframify.jpg` | `privacy/photo-frame/privacy_zh.html`, `privacy/photo-frame/privacy_en.html` |
 
