@@ -1,105 +1,64 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="zh-Hans">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>隐私政策</title>
-<style>
-  html {
-    background: #f7f8fb;
-  }
-  body {
-    margin: 0;
-    padding: 24px 20px 36px;
-    background: #f7f8fb;
-    color: #17191f;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.72;
-    font-size: 16px;
-    -webkit-text-size-adjust: 100%;
-  }
-  h1 {
-    margin: 0 0 6px;
-    color: #101218;
-    font-size: 26px;
-    line-height: 1.22;
-    font-weight: 800;
-  }
-  h2 {
-    margin: 28px 0 10px;
-    color: #17191f;
-    font-size: 18px;
-    line-height: 1.35;
-    font-weight: 750;
-  }
-  p, li {
-    color: #343843;
-  }
-  p {
-    margin: 0 0 12px;
-  }
-  ul {
-    margin: 0;
-    padding-left: 20px;
-  }
-  li {
-    margin-bottom: 8px;
-  }
-  a {
-    color: #3f67ff;
-    font-weight: 650;
-  }
-  .meta {
-    color: #747b8c;
-    font-size: 13px;
-    margin-bottom: 22px;
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artino 隐私政策</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; padding: 28px 22px 44px; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "SF Pro Text", sans-serif; line-height: 1.75; color: #1c1a17; background: #fbfaf7; }
+    .content { max-width: 760px; margin: 0 auto; }
+    h1 { margin: 0 0 8px; font-size: 30px; line-height: 1.15; }
+    h2 { margin: 28px 0 8px; font-size: 18px; }
+    p, li { font-size: 15px; }
+    ul { padding-left: 20px; }
+    .meta { color: #6f6a61; font-size: 13px; }
+    @media (prefers-color-scheme: dark) {
+      body { color: #f3eee4; background: #141311; }
+      .meta { color: #aaa197; }
+    }
+  </style>
 </head>
 <body>
-<h1>隐私政策</h1>
-<p class="meta">最近更新时间：2026-05-04</p>
+<div class="content">
+  <h1>Artino 隐私政策</h1>
+  <p class="meta">生效日期：2026 年 8 月 23 日</p>
 
-<h2>1. 我们收集哪些信息</h2>
-<ul>
-  <li>账户信息：登录邮箱、用户 ID。</li>
-  <li>创作数据：你输入的提示词、上传的参考图、生成结果图。</li>
-  <li>订阅信息：由 Apple App Store 与 RevenueCat 提供的购买状态、商品标识、有效期与权益同步数据。</li>
-  <li>诊断信息：为排查问题所需的基础错误日志与请求时间信息。</li>
-</ul>
+  <p>Artino 是一款面向 iPhone、iPad 和 Mac 的本地 zine 制作应用。本政策说明应用会使用哪些信息，以及这些信息如何被处理。</p>
 
-<h2>2. 信息如何使用</h2>
-<ul>
-  <li>完成 AI 文生图、换脸等核心功能。</li>
-  <li>同步你的剩余试用次数、订阅套餐、生成额度与历史记录。</li>
-  <li>存储你上传与生成的图片资源，便于历史回看和再次下载。</li>
-  <li>处理支付恢复、订阅状态更新与客服支持请求。</li>
-</ul>
+  <h2>你主动提供的信息</h2>
+  <p>Artino 会处理你主动选择导入的照片或图片文件。这些图片会用于生成可编辑的 zine 页面、预览、导出文件和本地保存的项目。</p>
 
-<h2>3. 第三方服务</h2>
-<ul>
-  <li>Apple App Store：处理支付、退款、订阅管理与评价。</li>
-  <li>RevenueCat：同步订阅商品、到期时间与权益状态。</li>
-  <li>Supabase：处理认证与用户会话。</li>
-  <li>Cloudflare R2 或项目配置的对象存储：保存上传图与生成图。</li>
-  <li>AI 供应商：如 OpenAI、fal.ai，用于执行图像生成与换脸任务。</li>
-</ul>
+  <h2>本地处理</h2>
+  <p>图片分析、自动排版、编辑、预览渲染和导出渲染都在你的设备本地完成。当前版本不会把你导入的图片上传到我们的服务器，也不会使用云端处理。</p>
 
-<h2>4. 数据保留</h2>
-<ul>
-  <li>账户与历史记录会在你继续使用服务期间保留。</li>
-  <li>出于运营、风控、账务或争议处理需要，部分支付与日志信息可能在合理期限内继续保存。</li>
-</ul>
+  <h2>照片、文件和导出</h2>
+  <ul>
+    <li>在 iOS 和 iPadOS 上，Artino 只会在你选择导入照片或保存导出图片、视频时请求相应权限。</li>
+    <li>在 macOS 上，Artino 只会读取或写入你通过系统文件选择器、保存面板主动选择的文件或文件夹。</li>
+    <li>PNG、JPG、PDF、长图、跨页和视频文件只会在你主动选择导出时生成。</li>
+  </ul>
 
-<h2>5. 你的权利</h2>
-<ul>
-  <li>你可以通过 App Store 管理订阅、取消自动续费。</li>
-  <li>你可以通过联系开发者请求删除账户相关数据或咨询隐私问题。</li>
-</ul>
+  <h2>购买信息</h2>
+  <p>Artino Pro 买断和订阅由 Apple 通过 App Store 处理。Artino 可能会在设备本地保存权益状态、商品标识符和订阅到期时间，用于解锁 Pro 功能。我们不会接收或保存你的银行卡信息。</p>
 
-<h2>6. 联系我们</h2>
-<p>邮箱：<a href="mailto:zhyl1881@163.com">zhyl1881@163.com</a></p>
+  <h2>设备本地设置</h2>
+  <p>Artino 会在设备本地保存语言、外观等应用偏好设置。这些设置仅用于应用功能。</p>
 
-<p>使用本应用即表示你已阅读并同意本隐私政策。</p>
+  <h2>追踪与分析</h2>
+  <p>当前版本的 Artino 不会跨 App 或网站追踪你，也没有集成第三方广告或分析 SDK。</p>
+
+  <h2>数据共享</h2>
+  <p>我们不会出售你的数据，也不会向第三方分享你导入的图片、本地项目或应用偏好设置。</p>
+
+  <h2>儿童隐私</h2>
+  <p>Artino 并非面向 13 岁以下儿童设计。应用不会有意收集儿童的个人信息。</p>
+
+  <h2>政策变更</h2>
+  <p>随着 Artino 功能变化，我们可能更新本政策。如果未来版本加入账号、云端功能、分析或其他数据处理方式，我们会在发布这些功能前更新本政策。</p>
+
+  <h2>联系我们</h2>
+  <p>如有隐私相关问题，请通过 <a href="mailto:zhyl1881@163.com">zhyl1881@163.com</a> 联系我们。</p>
+</div>
 </body>
 </html>

@@ -1,105 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy</title>
-<style>
-  html {
-    background: #f7f8fb;
-  }
-  body {
-    margin: 0;
-    padding: 24px 20px 36px;
-    background: #f7f8fb;
-    color: #17191f;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.72;
-    font-size: 16px;
-    -webkit-text-size-adjust: 100%;
-  }
-  h1 {
-    margin: 0 0 6px;
-    color: #101218;
-    font-size: 26px;
-    line-height: 1.22;
-    font-weight: 800;
-  }
-  h2 {
-    margin: 28px 0 10px;
-    color: #17191f;
-    font-size: 18px;
-    line-height: 1.35;
-    font-weight: 750;
-  }
-  p, li {
-    color: #343843;
-  }
-  p {
-    margin: 0 0 12px;
-  }
-  ul {
-    margin: 0;
-    padding-left: 20px;
-  }
-  li {
-    margin-bottom: 8px;
-  }
-  a {
-    color: #3f67ff;
-    font-weight: 650;
-  }
-  .meta {
-    color: #747b8c;
-    font-size: 13px;
-    margin-bottom: 22px;
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artino Privacy Policy</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; padding: 28px 22px 44px; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif; line-height: 1.62; color: #1c1a17; background: #fbfaf7; }
+    .content { max-width: 760px; margin: 0 auto; }
+    h1 { margin: 0 0 8px; font-size: 30px; line-height: 1.15; }
+    h2 { margin: 28px 0 8px; font-size: 18px; }
+    p, li { font-size: 15px; }
+    ul { padding-left: 20px; }
+    .meta { color: #6f6a61; font-size: 13px; }
+    @media (prefers-color-scheme: dark) {
+      body { color: #f3eee4; background: #141311; }
+      .meta { color: #aaa197; }
+    }
+  </style>
 </head>
 <body>
-<h1>Privacy Policy</h1>
-<p class="meta">Last Updated: May 4, 2026</p>
+<div class="content">
+  <h1>Artino Privacy Policy</h1>
+  <p class="meta">Effective date: August 23, 2026</p>
 
-<h2>1. Information We Collect</h2>
-<ul>
-  <li>Account information: login email and user ID.</li>
-  <li>Creation data: prompts you enter, reference images you upload, and generated result images.</li>
-  <li>Subscription information: purchase status, product identifiers, expiration dates, and entitlement sync data provided by Apple App Store and RevenueCat.</li>
-  <li>Diagnostic information: basic error logs and request timing information needed to troubleshoot issues.</li>
-</ul>
+  <p>Artino is a local zine-making app for iPhone, iPad, and Mac. This policy explains what information the app uses and how it is handled.</p>
 
-<h2>2. How We Use Information</h2>
-<ul>
-  <li>To provide core features such as AI image generation and face swap.</li>
-  <li>To sync your remaining trial quota, subscription plan, generation credits, and history.</li>
-  <li>To store uploaded and generated image assets so you can review and download them again.</li>
-  <li>To process purchase restoration, subscription status updates, and customer support requests.</li>
-</ul>
+  <h2>Information You Provide</h2>
+  <p>Artino works with the photos or image files that you choose to import. Imported images are used to create editable zine pages, previews, exports, and locally saved projects.</p>
 
-<h2>3. Third-Party Services</h2>
-<ul>
-  <li>Apple App Store: handles payments, refunds, subscription management, and reviews.</li>
-  <li>RevenueCat: syncs subscription products, expiration dates, and entitlement status.</li>
-  <li>Supabase: handles authentication and user sessions.</li>
-  <li>Cloudflare R2 or the configured object storage service: stores uploaded and generated images.</li>
-  <li>AI providers, such as OpenAI and fal.ai: perform image generation and face swap tasks.</li>
-</ul>
+  <h2>Local Processing</h2>
+  <p>Image analysis, layout generation, editing, preview rendering, and export rendering are performed on your device. Artino does not upload your imported images to our servers and does not use cloud processing in the current version.</p>
 
-<h2>4. Data Retention</h2>
-<ul>
-  <li>Account information and history are retained while you continue using the service.</li>
-  <li>Some payment and log information may be retained for a reasonable period for operations, risk control, accounting, or dispute handling.</li>
-</ul>
+  <h2>Photos, Files, and Exports</h2>
+  <ul>
+    <li>On iOS and iPadOS, Artino requests access only when you choose photos to import or save exported images or videos to Photos.</li>
+    <li>On macOS, Artino reads and writes files only through files or folders you select through the system file picker or save panel.</li>
+    <li>Exported PNG, JPG, PDF, long image, spread, and video files are created only when you choose to export.</li>
+  </ul>
 
-<h2>5. Your Rights</h2>
-<ul>
-  <li>You can manage subscriptions and cancel auto-renewal through the App Store.</li>
-  <li>You can contact the developer to request deletion of account-related data or ask privacy questions.</li>
-</ul>
+  <h2>Purchases</h2>
+  <p>Artino Pro purchases and subscriptions are processed by Apple through the App Store. Artino may store a local entitlement state, product identifier, and subscription expiration date on your device so the app can unlock Pro features. We do not receive or store your payment card information.</p>
 
-<h2>6. Contact Us</h2>
-<p>Email: <a href="mailto:zhyl1881@163.com">zhyl1881@163.com</a></p>
+  <h2>Settings Stored On Device</h2>
+  <p>Artino stores app preferences such as language and appearance locally on your device. These preferences are used only for app functionality.</p>
 
-<p>By using this app, you acknowledge that you have read and agreed to this Privacy Policy.</p>
+  <h2>Tracking and Analytics</h2>
+  <p>Artino does not track you across apps or websites and does not include third-party advertising or analytics SDKs in the current version.</p>
+
+  <h2>Data Sharing</h2>
+  <p>We do not sell your data. We do not share your imported images, local projects, or app preferences with third parties.</p>
+
+  <h2>Children's Privacy</h2>
+  <p>Artino is not directed to children under 13. The app does not knowingly collect personal information from children.</p>
+
+  <h2>Changes</h2>
+  <p>We may update this policy as Artino changes. If a future version adds accounts, cloud features, analytics, or other data handling, this policy will be updated before those features are released.</p>
+
+  <h2>Contact</h2>
+  <p>For privacy questions, contact us at <a href="mailto:zhyl1881@163.com">zhyl1881@163.com</a>.</p>
+</div>
 </body>
 </html>
