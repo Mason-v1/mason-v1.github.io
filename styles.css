@@ -7,6 +7,8 @@
     --soft: #edf5ef;
     --primary: #2f8a5c;
     --primary-strong: #17643f;
+    --warm: #df765b;
+    --warm-strong: #b94f38;
     --accent: #dff3e7;
     --border: rgba(38, 85, 58, 0.14);
     --ring: rgba(47, 138, 92, 0.38);
@@ -91,6 +93,7 @@ svg {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .social-nav {
@@ -141,6 +144,8 @@ main {
 
 .hero,
 .products-section,
+.manifesto-section,
+.proof-section,
 .contact-section,
 .footer {
     position: relative;
@@ -211,6 +216,7 @@ main {
     padding: 0 18px;
     font-size: 0.94rem;
     font-weight: 700;
+    text-align: center;
     transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
 }
 
@@ -307,7 +313,24 @@ main {
     line-height: 1.45;
 }
 
+.mini-cta {
+    width: fit-content;
+    min-height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 9px;
+    border-radius: 999px;
+    background: var(--primary-strong);
+    padding: 0 10px;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
 .products-section,
+.manifesto-section,
+.proof-section,
 .contact-section {
     padding-top: 42px;
     padding-bottom: 34px;
@@ -404,10 +427,30 @@ main {
     line-height: 1.7;
 }
 
+.card-cta {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    border-radius: 999px;
+    background: var(--primary-strong);
+    padding: 0 15px;
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 700;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.feature-card a:hover .card-cta {
+    background: var(--warm-strong);
+    transform: translateY(-1px);
+}
+
 .product-carousel {
     --carousel-card-width: 320px;
     --carousel-gap: 10px;
-    --carousel-columns-per-set: 4;
+    --carousel-columns-per-set: 3;
     margin-top: 18px;
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -429,7 +472,7 @@ main {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: var(--carousel-card-width);
-    grid-template-rows: repeat(2, 78px);
+    grid-template-rows: repeat(3, 78px);
     width: max-content;
     gap: var(--carousel-gap);
     overflow: visible;
@@ -483,11 +526,109 @@ main {
 .carousel-row em {
     border: 1px solid rgba(47, 138, 92, 0.18);
     border-radius: 999px;
-    background: var(--accent);
+    background: var(--primary-strong);
     padding: 4px 9px;
-    color: var(--primary-strong);
+    color: #ffffff;
     font-size: 0.72rem;
     font-style: normal;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.manifesto-section {
+    padding-top: 62px;
+}
+
+.manifesto-grid,
+.proof-grid {
+    display: grid;
+    gap: 16px;
+}
+
+.manifesto-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.manifesto-card,
+.proof-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-strong);
+    box-shadow: 0 12px 28px rgba(62, 91, 73, 0.08);
+}
+
+.manifesto-card {
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 22px;
+}
+
+.manifesto-card span,
+.proof-card span {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: auto;
+    border-radius: 999px;
+    background: #fff2ed;
+    padding: 5px 10px;
+    color: var(--warm-strong);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.manifesto-card strong,
+.proof-card strong {
+    display: block;
+    margin-top: 28px;
+    color: var(--foreground);
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    line-height: 1.28;
+}
+
+.manifesto-card small,
+.proof-card small {
+    display: block;
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+.proof-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.proof-card {
+    min-height: 236px;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.proof-card:hover {
+    border-color: rgba(223, 118, 91, 0.34);
+    background: #fffdfb;
+    transform: translateY(-2px);
+}
+
+.proof-card b {
+    width: fit-content;
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    border-radius: 999px;
+    background: var(--soft);
+    padding: 0 12px;
+    color: var(--primary-strong);
+    font-size: 0.82rem;
     font-weight: 700;
 }
 
@@ -584,6 +725,11 @@ main {
         grid-template-columns: 1fr;
     }
 
+    .manifesto-grid,
+    .proof-grid {
+        grid-template-columns: 1fr;
+    }
+
     .feature-card-large {
         grid-row: auto;
         min-height: 320px;
@@ -624,8 +770,13 @@ main {
 
     .page-nav a {
         min-width: 0;
-        padding: 0 12px;
+        padding: 0 11px;
         font-size: 0.84rem;
+    }
+
+    .primary-link,
+    .secondary-link {
+        flex: 1 1 150px;
     }
 
     .hero {

@@ -6,9 +6,11 @@ Live site: https://mason-v1.github.io/Apps/
 
 ## Apps
 
+- **Artino** — Photo zine maker for turning image sets into mini magazines.
+- **Rovo Cam** — A guided camera for cleaner composition and faster shooting.
+- **LiveToFrame** — Extract still frames and convert Live Photos into shareable formats.
 - **PhotoFramify** — Photo frames, watermarks, EXIF overlays, and collage tools.
 - **Photo Collage Generator** — Quick grids, freeform collages, and social-ready photo layouts.
-- **LiveToFrame** — Extract still frames and convert Live Photos into shareable formats.
 - **DidMore** — A lightweight daily task and habit timeline.
 - **Emotify** — A simple meme and expression content creator.
 - **Liply** — AI lipstick try-on for previewing and saving beauty looks.

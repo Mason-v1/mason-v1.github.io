@@ -6,6 +6,7 @@
 
 | App | App Store ID | Link | Positioning | Icon | Privacy |
 | --- | --- | --- | --- | --- | --- |
+| Artino | 6774119167 | https://apps.apple.com/app/id6774119167 | 照片 Zine / 迷你杂志生成工具，当前主推产品。 | `assets/images/app-icons/artino.png` | `privacy/artino/privacy_zh.html`, `privacy/artino/privacy_en.html` |
 | Rovo Cam | 6786212021 | https://apps.apple.com/app/id6786212021 | 带构图引导的相机工具，主推产品。 | `assets/images/app-icons/rovocam.jpg` | `privacy/rovocam/privacy_zh.html`, `privacy/rovocam/privacy_en.html` |
 | LiveToFrame | 6757419019 | https://apps.apple.com/app/id6757419019 | Live Photo 片刻提取、装裱和分享。 | `assets/images/app-icons/livetoframe.jpg` | `privacy/liveframe/privacy.html` |
 | PhotoFramify | 6755989422 | https://apps.apple.com/app/id6755989422 | 照片边框、水印、拼贴和发布图工具。 | `assets/images/app-icons/photoframify.jpg` | `privacy/photo-frame/privacy_zh.html`, `privacy/photo-frame/privacy_en.html` |
@@ -26,5 +27,4 @@
 
 | App / Folder | Known Info | Privacy |
 | --- | --- | --- |
-| Artino | 待补 App Store ID 和主页展示策略。 | `privacy/artino/privacy_zh.html`, `privacy/artino/privacy_en.html` |
 | PixSafe | 制作 iPhone 锁屏 Live Photo 的工具。 | `privacy/pixsafe/privacy_zh.html`, `privacy/pixsafe/privacy_en.html` |
