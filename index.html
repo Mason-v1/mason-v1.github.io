@@ -6,7 +6,8 @@
     <title>MasonApps | Apple 平台产品</title>
     <meta name="description" content="Mason 的 Apple 平台产品主页，展示 Artino、Rovo Cam、LiveToFrame 等 iOS 与 macOS 应用。">
     <meta name="theme-color" content="#f7fbf8">
-    <link rel="stylesheet" href="styles.css?v=20260903-cta-proof">
+    <link rel="stylesheet" href="styles.css?v=20260903-i18n">
+    <script src="assets/i18n.js?v=20260903" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital@0;1&amp;family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -23,11 +24,15 @@
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5h15A2.5 2.5 0 0 1 22 7.5v9A2.5 2.5 0 0 1 19.5 19h-15A2.5 2.5 0 0 1 2 16.5v-9A2.5 2.5 0 0 1 4.5 5Zm0 2a.5.5 0 0 0-.5.5v.35l8 4.8 8-4.8V7.5a.5.5 0 0 0-.5-.5h-15Zm15 10a.5.5 0 0 0 .5-.5v-6.32l-7.49 4.5a1 1 0 0 1-1.02 0L4 10.18v6.32a.5.5 0 0 0 .5.5h15Z"/></svg>
                 </a>
             </nav>
-            <nav class="page-nav" aria-label="页面导航">
-                <a href="#products">产品</a>
-                <a href="#manifesto">理念</a>
-                <a href="#contact">联系</a>
+            <nav class="page-nav" aria-label="页面导航" data-i18n-aria-label="navAria">
+                <a href="#products" data-i18n="navProducts">产品</a>
+                <a href="#manifesto" data-i18n="navManifesto">理念</a>
+                <a href="#contact" data-i18n="navContact">联系</a>
             </nav>
+            <div class="language-switcher" aria-label="语言切换" data-i18n-aria-label="languageSwitcherAria">
+                <button type="button" data-lang-option="zh" aria-pressed="true">中文</button>
+                <button type="button" data-lang-option="en" aria-pressed="false">EN</button>
+            </div>
         </section>
     </header>
 
@@ -35,39 +40,39 @@
         <section class="hero section-shell">
             <div class="hero-copy">
                 <h1>Mason</h1>
-                <h2>为 Apple 平台做清爽的小工具。</h2>
-                <p>
+                <h2 data-i18n="heroTitle">为 Apple 平台做清爽的小工具。</h2>
+                <p data-i18n="heroCopy">
                     我做一些清爽、顺手、面向真实场景的 iOS / macOS 产品。现在重点在相机、Live Photo
                     和影像创作相关工具上，把复杂操作收进安静的界面里。
                 </p>
                 <div class="hero-actions">
-                    <a class="primary-link" href="https://apps.apple.com/app/id6774119167" target="_blank" rel="noopener noreferrer">下载 Artino</a>
-                    <a class="secondary-link" href="#products">查看全部产品</a>
+                    <a class="primary-link" href="https://apps.apple.com/app/id6774119167" target="_blank" rel="noopener noreferrer" data-i18n="downloadArtino">下载 Artino</a>
+                    <a class="secondary-link" href="#products" data-i18n="viewProducts">查看全部产品</a>
                 </div>
             </div>
-            <div class="hero-stack" aria-label="主推产品">
+            <div class="hero-stack" aria-label="主推产品" data-i18n-aria-label="featuredAria">
                 <a class="mini-product" href="https://apps.apple.com/app/id6774119167" target="_blank" rel="noopener noreferrer">
                     <img src="assets/images/app-icons/artino.png" alt="Artino app icon">
                     <span>
                         <strong>Artino</strong>
-                        <small>照片 Zine / 迷你杂志生成工具</small>
-                        <span class="mini-cta">App Store 下载</span>
+                        <small data-i18n="artinoShort">照片 Zine / 迷你杂志生成工具</small>
+                        <span class="mini-cta" data-i18n="appStoreDownload">App Store 下载</span>
                     </span>
                 </a>
                 <a class="mini-product" href="https://apps.apple.com/app/id6786212021" target="_blank" rel="noopener noreferrer">
                     <img src="assets/images/app-icons/rovocam.jpg" alt="Rovo Cam app icon">
                     <span>
                         <strong>Rovo Cam</strong>
-                        <small>带构图引导的胶片相机</small>
-                        <span class="mini-cta">App Store 下载</span>
+                        <small data-i18n="rovoShort">带构图引导的胶片相机</small>
+                        <span class="mini-cta" data-i18n="appStoreDownload">App Store 下载</span>
                     </span>
                 </a>
                 <a class="mini-product" href="https://apps.apple.com/app/id6757419019" target="_blank" rel="noopener noreferrer">
                     <img src="assets/images/app-icons/livetoframe.jpg" alt="LiveToFrame app icon">
                     <span>
                         <strong>LiveToFrame</strong>
-                        <small>Live Photo、GIF 和视频帧导出</small>
-                        <span class="mini-cta">App Store 下载</span>
+                        <small data-i18n="liveToFrameShort">Live Photo、GIF 和视频帧导出</small>
+                        <span class="mini-cta" data-i18n="appStoreDownload">App Store 下载</span>
                     </span>
                 </a>
             </div>
@@ -75,188 +80,197 @@
 
         <section class="section-shell products-section" id="products">
             <div class="section-heading">
-                <p>主推产品</p>
-                <h2>最近重点推进的三款产品。</h2>
+                <p data-i18n="featuredLabel">主推产品</p>
+                <h2 data-i18n="featuredTitle">最近重点推进的四款产品。</h2>
             </div>
 
             <div class="featured-grid">
                 <article class="feature-card feature-card-large">
                     <a href="https://apps.apple.com/app/id6774119167" target="_blank" rel="noopener noreferrer">
                         <img class="feature-icon" src="assets/images/app-icons/artino.png" alt="Artino app icon">
-                        <span class="product-meta">照片 Zine · iOS / iPadOS / macOS</span>
+                        <span class="product-meta" data-i18n="artinoMeta">照片 Zine · iOS / iPadOS / macOS</span>
                         <strong>Artino</strong>
-                        <small>把照片快速生成有杂志感的 Zine，从模板、排版到导出，给日常影像一个更完整的呈现方式。</small>
-                        <span class="card-cta">在 App Store 下载</span>
+                        <small data-i18n="artinoDesc">把照片快速生成有杂志感的 Zine，从模板、排版到导出，给日常影像一个更完整的呈现方式。</small>
+                        <span class="card-cta" data-i18n="downloadOnAppStore">在 App Store 下载</span>
                     </a>
                 </article>
                 <article class="feature-card">
                     <a href="https://apps.apple.com/app/id6786212021" target="_blank" rel="noopener noreferrer">
                         <img class="feature-icon" src="assets/images/app-icons/rovocam.jpg" alt="Rovo Cam app icon">
-                        <span class="product-meta">相机工具 · iOS / iPadOS</span>
+                        <span class="product-meta" data-i18n="rovoMeta">相机工具 · iOS / iPadOS</span>
                         <strong>Rovo Cam</strong>
-                        <small>把拍摄体验做得更直接、更干净，减少设置负担，留下最常用的相机动作。</small>
-                        <span class="card-cta">在 App Store 下载</span>
+                        <small data-i18n="rovoDesc">把拍摄体验做得更直接、更干净，减少设置负担，留下最常用的相机动作。</small>
+                        <span class="card-cta" data-i18n="downloadOnAppStore">在 App Store 下载</span>
                     </a>
                 </article>
                 <article class="feature-card">
                     <a href="https://apps.apple.com/app/id6757419019" target="_blank" rel="noopener noreferrer">
                         <img class="feature-icon" src="assets/images/app-icons/livetoframe.jpg" alt="LiveToFrame app icon">
-                        <span class="product-meta">Live Photo · iOS</span>
+                        <span class="product-meta" data-i18n="liveToFrameMeta">Live Photo · iOS</span>
                         <strong>LiveToFrame</strong>
-                        <small>把 Live Photo 里的片刻抽出来，变成可以保存、分享和回看的画框记忆。</small>
-                        <span class="card-cta">在 App Store 下载</span>
+                        <small data-i18n="liveToFrameDesc">把 Live Photo 里的片刻抽出来，变成可以保存、分享和回看的画框记忆。</small>
+                        <span class="card-cta" data-i18n="downloadOnAppStore">在 App Store 下载</span>
+                    </a>
+                </article>
+                <article class="feature-card">
+                    <a href="https://apps.apple.com/app/id6755989422" target="_blank" rel="noopener noreferrer">
+                        <img class="feature-icon" src="assets/images/app-icons/photoframify.jpg" alt="PhotoFramify app icon">
+                        <span class="product-meta" data-i18n="photoFramifyMeta">照片装裱 · iOS / macOS</span>
+                        <strong>PhotoFramify</strong>
+                        <small data-i18n="photoFramifyDesc">给照片加边框、水印与拼贴布局，用简单流程做出更完整的发布图。</small>
+                        <span class="card-cta" data-i18n="downloadOnAppStore">在 App Store 下载</span>
                     </a>
                 </article>
             </div>
 
-            <section class="product-carousel" aria-label="All products">
+            <section class="product-carousel" aria-label="全部产品" data-i18n-aria-label="allProductsAria">
                 <div class="carousel-heading">
-                    <h3>全部产品</h3>
+                    <h3 data-i18n="allProducts">全部产品</h3>
                 </div>
                 <div class="carousel-track">
                     <a class="carousel-row priority" href="https://apps.apple.com/app/id6774119167" target="_blank" rel="noopener noreferrer">
                         <img class="carousel-icon" src="assets/images/app-icons/artino.png" alt="Artino app icon" width="46" height="46">
                         <span>
                             <strong>Artino</strong>
-                            <small>照片 Zine / 迷你杂志生成工具</small>
+                            <small data-i18n="artinoShort">照片 Zine / 迷你杂志生成工具</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row priority" href="https://apps.apple.com/app/id6786212021" target="_blank" rel="noopener noreferrer">
                         <img class="carousel-icon" src="assets/images/app-icons/rovocam.jpg" alt="Rovo Cam app icon" width="46" height="46">
                         <span>
                             <strong>Rovo Cam</strong>
-                            <small>带构图引导的胶片相机</small>
+                            <small data-i18n="rovoShort">带构图引导的胶片相机</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row priority" href="https://apps.apple.com/app/id6757419019" target="_blank" rel="noopener noreferrer">
                         <img class="carousel-icon" src="assets/images/app-icons/livetoframe.jpg" alt="LiveToFrame app icon" width="46" height="46">
                         <span>
                             <strong>LiveToFrame</strong>
-                            <small>Live Photo、GIF 和视频帧导出</small>
+                            <small data-i18n="liveToFrameShort">Live Photo、GIF 和视频帧导出</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row priority" href="https://apps.apple.com/app/id6755989422" target="_blank" rel="noopener noreferrer">
                         <img class="carousel-icon" src="assets/images/app-icons/photoframify.jpg" alt="PhotoFramify app icon" width="46" height="46">
                         <span>
                             <strong>PhotoFramify</strong>
-                            <small>照片边框、水印和拼贴布局</small>
+                            <small data-i18n="photoFramifyShort">照片边框、水印和拼贴布局</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row muted" href="https://apps.apple.com/app/id6773276227" target="_blank" rel="noopener noreferrer">
                         <img class="carousel-icon" src="assets/images/app-icons/photo-collage-generator.jpg" alt="Photo Collage Generator app icon" width="46" height="46">
                         <span>
                             <strong>Photo Collage Generator</strong>
-                            <small>拼图、模板和九宫格切图流程</small>
+                            <small data-i18n="photoCollageShort">拼图、模板和九宫格切图流程</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row muted" href="https://apps.apple.com/app/id6757922905" target="_blank" rel="noopener noreferrer">
                         <img class="carousel-icon" src="assets/images/app-icons/didmore.jpg" alt="DidMore app icon" width="46" height="46">
                         <span>
                             <strong>DidMore</strong>
-                            <small>轻量习惯记录，把坚持变成低压力反馈。</small>
+                            <small data-i18n="didMoreShort">轻量习惯记录，把坚持变成低压力反馈。</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row muted" href="https://apps.apple.com/app/id6759697246" target="_blank" rel="noopener noreferrer">
                         <img class="carousel-icon" src="assets/images/app-icons/emotify.jpg" alt="Emotify app icon" width="46" height="46">
                         <span>
                             <strong>Emotify</strong>
-                            <small>更轻的表情包与表达内容创作工具。</small>
+                            <small data-i18n="emotifyShort">更轻的表情包与表达内容创作工具。</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row muted" href="https://apps.apple.com/app/id6779545464" target="_blank" rel="noopener noreferrer">
                         <img class="carousel-icon" src="assets/images/app-icons/liply.jpg" alt="Liply app icon" width="46" height="46">
                         <span>
                             <strong>Liply</strong>
-                            <small>AI 口红试色镜，实时预览和收藏适合自己的色号。</small>
+                            <small data-i18n="liplyShort">AI 口红试色镜，实时预览和收藏适合自己的色号。</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row muted" href="https://apps.apple.com/app/id6783653531" target="_blank" rel="noopener noreferrer">
                         <img class="carousel-icon" src="assets/images/app-icons/lift.png" alt="Lift app icon" width="46" height="46">
                         <span>
                             <strong>Lift</strong>
-                            <small>简洁的健身训练记录，专注动作、重量和进步轨迹。</small>
+                            <small data-i18n="liftShort">简洁的健身训练记录，专注动作、重量和进步轨迹。</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row priority" href="https://apps.apple.com/app/id6774119167" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
                         <img class="carousel-icon" src="assets/images/app-icons/artino.png" alt="" width="46" height="46">
                         <span>
                             <strong>Artino</strong>
-                            <small>照片 Zine / 迷你杂志生成工具</small>
+                            <small data-i18n="artinoShort">照片 Zine / 迷你杂志生成工具</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row priority" href="https://apps.apple.com/app/id6786212021" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
                         <img class="carousel-icon" src="assets/images/app-icons/rovocam.jpg" alt="" width="46" height="46">
                         <span>
                             <strong>Rovo Cam</strong>
-                            <small>带构图引导的胶片相机</small>
+                            <small data-i18n="rovoShort">带构图引导的胶片相机</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row priority" href="https://apps.apple.com/app/id6757419019" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
                         <img class="carousel-icon" src="assets/images/app-icons/livetoframe.jpg" alt="" width="46" height="46">
                         <span>
                             <strong>LiveToFrame</strong>
-                            <small>Live Photo、GIF 和视频帧导出</small>
+                            <small data-i18n="liveToFrameShort">Live Photo、GIF 和视频帧导出</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row priority" href="https://apps.apple.com/app/id6755989422" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
                         <img class="carousel-icon" src="assets/images/app-icons/photoframify.jpg" alt="" width="46" height="46">
                         <span>
                             <strong>PhotoFramify</strong>
-                            <small>照片边框、水印和拼贴布局</small>
+                            <small data-i18n="photoFramifyShort">照片边框、水印和拼贴布局</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row muted" href="https://apps.apple.com/app/id6773276227" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
                         <img class="carousel-icon" src="assets/images/app-icons/photo-collage-generator.jpg" alt="" width="46" height="46">
                         <span>
                             <strong>Photo Collage Generator</strong>
-                            <small>拼图、模板和九宫格切图流程</small>
+                            <small data-i18n="photoCollageShort">拼图、模板和九宫格切图流程</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row muted" href="https://apps.apple.com/app/id6757922905" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
                         <img class="carousel-icon" src="assets/images/app-icons/didmore.jpg" alt="" width="46" height="46">
                         <span>
                             <strong>DidMore</strong>
-                            <small>轻量习惯记录，把坚持变成低压力反馈。</small>
+                            <small data-i18n="didMoreShort">轻量习惯记录，把坚持变成低压力反馈。</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row muted" href="https://apps.apple.com/app/id6759697246" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
                         <img class="carousel-icon" src="assets/images/app-icons/emotify.jpg" alt="" width="46" height="46">
                         <span>
                             <strong>Emotify</strong>
-                            <small>更轻的表情包与表达内容创作工具。</small>
+                            <small data-i18n="emotifyShort">更轻的表情包与表达内容创作工具。</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row muted" href="https://apps.apple.com/app/id6779545464" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
                         <img class="carousel-icon" src="assets/images/app-icons/liply.jpg" alt="" width="46" height="46">
                         <span>
                             <strong>Liply</strong>
-                            <small>AI 口红试色镜，实时预览和收藏适合自己的色号。</small>
+                            <small data-i18n="liplyShort">AI 口红试色镜，实时预览和收藏适合自己的色号。</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                     <a class="carousel-row muted" href="https://apps.apple.com/app/id6783653531" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1">
                         <img class="carousel-icon" src="assets/images/app-icons/lift.png" alt="" width="46" height="46">
                         <span>
                             <strong>Lift</strong>
-                            <small>简洁的健身训练记录，专注动作、重量和进步轨迹。</small>
+                            <small data-i18n="liftShort">简洁的健身训练记录，专注动作、重量和进步轨迹。</small>
                         </span>
-                        <em>下载</em>
+                        <em data-i18n="download">下载</em>
                     </a>
                 </div>
             </section>
@@ -264,59 +278,57 @@
 
         <section class="section-shell manifesto-section" id="manifesto">
             <div class="section-heading">
-                <p>产品理念</p>
-                <h2>小工具也应该有自己的性格。</h2>
+                <p data-i18n="manifestoLabel">产品理念</p>
             </div>
             <div class="manifesto-grid">
                 <article class="manifesto-card">
                     <span>01</span>
-                    <strong>从真实场景开始</strong>
-                    <small>先看用户在什么时候卡住，再决定功能要不要存在。产品不追求大而全，而是让一个具体动作更顺。</small>
+                    <strong data-i18n="manifestoOneTitle">从真实场景开始</strong>
+                    <small data-i18n="manifestoOneCopy">先看用户在什么时候卡住，再决定功能要不要存在。产品不追求大而全，而是让一个具体动作更顺。</small>
                 </article>
                 <article class="manifesto-card">
                     <span>02</span>
-                    <strong>本地优先，少收集</strong>
-                    <small>照片、相机、习惯和创作工具都尽量在设备上完成处理。没有必要上传的数据，就不要碰。</small>
+                    <strong data-i18n="manifestoTwoTitle">本地优先，少收集</strong>
+                    <small data-i18n="manifestoTwoCopy">照片、相机、习惯和创作工具都尽量在设备上完成处理。没有必要上传的数据，就不要碰。</small>
                 </article>
                 <article class="manifesto-card">
                     <span>03</span>
-                    <strong>安静但有质感</strong>
-                    <small>界面应该把注意力还给内容本身。默认状态要轻，关键动作要明显，细节要经得起反复使用。</small>
+                    <strong data-i18n="manifestoThreeTitle">安静但有质感</strong>
+                    <small data-i18n="manifestoThreeCopy">界面应该把注意力还给内容本身。默认状态要轻，关键动作要明显，细节要经得起反复使用。</small>
                 </article>
             </div>
         </section>
 
-        <section class="section-shell proof-section" aria-label="App Store 证明">
+        <section class="section-shell proof-section" aria-label="App Store 证明" data-i18n-aria-label="proofAria">
             <div class="section-heading">
-                <p>来自 App Store</p>
-                <h2>只展示已经能验证的信号。</h2>
+                <p data-i18n="proofLabel">来自 App Store</p>
             </div>
             <div class="proof-grid">
                 <a class="proof-card" href="https://apps.apple.com/app/id6774119167" target="_blank" rel="noopener noreferrer">
-                    <span>新上架</span>
-                    <strong>Artino 已登陆 iPhone、iPad 和 Mac</strong>
-                    <small>官方页显示 Artino 是免费应用，支持 App 内购买，分类为图像与设计。</small>
-                    <b>查看 App Store</b>
+                    <span data-i18n="proofNew">新上架</span>
+                    <strong data-i18n="proofArtinoTitle">Artino 已登陆 iPhone、iPad 和 Mac</strong>
+                    <small data-i18n="proofArtinoCopy">官方页显示 Artino 是免费应用，支持 App 内购买，分类为图像与设计。</small>
+                    <b data-i18n="viewAppStore">查看 App Store</b>
                 </a>
                 <a class="proof-card" href="https://apps.apple.com/us/app/rovo-cam-film-camera/id6786212021" target="_blank" rel="noopener noreferrer">
-                    <span>评分</span>
-                    <strong>Rovo Cam 5.0 / 5</strong>
-                    <small>美国区 App Store 页面显示 5 条评分，当前平均 5.0 分。</small>
-                    <b>查看评价</b>
+                    <span data-i18n="proofRating">评分</span>
+                    <strong data-i18n="proofRovoTitle">Rovo Cam 5.0 / 5</strong>
+                    <small data-i18n="proofRovoCopy">美国区 App Store 页面显示 5 条评分，当前平均 5.0 分。</small>
+                    <b data-i18n="viewReviews">查看评价</b>
                 </a>
                 <a class="proof-card" href="https://apps.apple.com/us/app/artino-photo-zine-maker/id6774119167" target="_blank" rel="noopener noreferrer">
-                    <span>隐私</span>
-                    <strong>Artino 页面显示未收集数据</strong>
-                    <small>App Store 隐私信息显示当前版本不收集用户数据，适合放在主页增强信任感。</small>
-                    <b>查看隐私信息</b>
+                    <span data-i18n="proofPrivacy">隐私</span>
+                    <strong data-i18n="proofPrivacyTitle">Artino 页面显示未收集数据</strong>
+                    <small data-i18n="proofPrivacyCopy">App Store 隐私信息显示当前版本不收集用户数据，适合放在主页增强信任感。</small>
+                    <b data-i18n="viewPrivacy">查看隐私信息</b>
                 </a>
             </div>
         </section>
 
         <section class="section-shell contact-section" id="contact">
             <div class="section-heading">
-                <p>联系</p>
-                <h2>产品合作、支持反馈，或者聊聊新的小工具。</h2>
+                <p data-i18n="contactLabel">联系</p>
+                <h2 data-i18n="contactTitle">产品合作、支持反馈，或者聊聊新的小工具。</h2>
             </div>
             <div class="contact-grid">
                 <a class="contact-card" href="mailto:zhyl1881@163.com">
@@ -324,7 +336,7 @@
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5h15A2.5 2.5 0 0 1 22 7.5v9A2.5 2.5 0 0 1 19.5 19h-15A2.5 2.5 0 0 1 2 16.5v-9A2.5 2.5 0 0 1 4.5 5Zm.15 2 7.35 4.41L19.35 7H4.65ZM20 9.33l-7.49 4.5a1 1 0 0 1-1.02 0L4 9.33v7.17a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5V9.33Z"/></svg>
                     </span>
                     <span>
-                        <strong>邮箱</strong>
+                        <strong data-i18n="email">邮箱</strong>
                         <small>zhyl1881@163.com</small>
                     </span>
                     <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>

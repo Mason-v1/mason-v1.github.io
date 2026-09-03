@@ -48,9 +48,15 @@ a {
 }
 
 a:focus-visible,
-a.carousel-row:focus-visible {
+a.carousel-row:focus-visible,
+button:focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 4px;
+}
+
+button {
+    border: 0;
+    font: inherit;
 }
 
 svg {
@@ -136,6 +142,42 @@ svg {
     border-color: rgba(47, 138, 92, 0.26);
     background: var(--accent);
     color: var(--primary-strong);
+}
+
+.language-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    padding: 2px;
+}
+
+.language-switcher button {
+    min-width: 44px;
+    min-height: 28px;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 700;
+    transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.language-switcher button[aria-pressed="true"] {
+    background: var(--primary-strong);
+    color: #ffffff;
+    box-shadow: 0 6px 14px rgba(23, 100, 63, 0.16);
+}
+
+.language-switcher button:hover {
+    color: var(--primary-strong);
+}
+
+.language-switcher button[aria-pressed="true"]:hover {
+    color: #ffffff;
 }
 
 main {
@@ -341,6 +383,11 @@ main {
     margin-bottom: 24px;
 }
 
+.manifesto-section .section-heading,
+.proof-section .section-heading {
+    margin-bottom: 14px;
+}
+
 .section-heading p {
     margin-bottom: 10px;
     color: var(--primary);
@@ -358,7 +405,7 @@ main {
 
 .featured-grid {
     display: grid;
-    grid-template-columns: 1.08fr 0.92fr;
+    grid-template-columns: 1.12fr 0.88fr;
     gap: 16px;
 }
 
@@ -371,8 +418,8 @@ main {
 }
 
 .feature-card-large {
-    grid-row: span 2;
-    min-height: 456px;
+    grid-row: span 3;
+    min-height: 692px;
     background: linear-gradient(160deg, #ffffff, #edf8f1);
 }
 
@@ -454,7 +501,9 @@ main {
     margin-top: 18px;
     border: 1px solid var(--border);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.72);
+    background:
+        linear-gradient(135deg, rgba(255, 242, 237, 0.46), rgba(255, 255, 255, 0) 46%),
+        rgba(255, 255, 255, 0.72);
     overflow: hidden;
 }
 
@@ -472,12 +521,12 @@ main {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: var(--carousel-card-width);
-    grid-template-rows: repeat(3, 78px);
+    grid-template-rows: repeat(3, 84px);
     width: max-content;
     gap: var(--carousel-gap);
     overflow: visible;
-    padding: 10px 12px 12px;
-    animation: carouselLoop 28s linear infinite;
+    padding: 24px 12px 28px;
+    animation: carouselLoop 30s linear infinite;
     will-change: transform;
 }
 
@@ -487,6 +536,8 @@ main {
 }
 
 .carousel-row {
+    --stagger-y: 0px;
+    --tilt: 0deg;
     display: grid;
     grid-template-columns: 46px minmax(0, 1fr) auto;
     gap: 13px;
@@ -496,12 +547,60 @@ main {
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.78);
     padding: 10px;
-    transition: background-color 160ms ease, transform 160ms ease;
+    transform: translateY(var(--stagger-y)) rotate(var(--tilt));
+    transform-origin: center;
+    transition: background-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
 }
 
 .carousel-row:hover {
     background: var(--soft);
-    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(62, 91, 73, 0.1);
+    transform: translateY(calc(var(--stagger-y) - 4px)) rotate(var(--tilt));
+}
+
+.carousel-row:nth-child(9n + 1) {
+    --stagger-y: -12px;
+    --tilt: -0.7deg;
+}
+
+.carousel-row:nth-child(9n + 2) {
+    --stagger-y: 8px;
+    --tilt: 0.35deg;
+}
+
+.carousel-row:nth-child(9n + 3) {
+    --stagger-y: 28px;
+    --tilt: -0.25deg;
+}
+
+.carousel-row:nth-child(9n + 4) {
+    --stagger-y: 12px;
+    --tilt: 0.65deg;
+}
+
+.carousel-row:nth-child(9n + 5) {
+    --stagger-y: -8px;
+    --tilt: -0.35deg;
+}
+
+.carousel-row:nth-child(9n + 6) {
+    --stagger-y: 18px;
+    --tilt: 0.4deg;
+}
+
+.carousel-row:nth-child(9n + 7) {
+    --stagger-y: 30px;
+    --tilt: -0.45deg;
+}
+
+.carousel-row:nth-child(9n + 8) {
+    --stagger-y: 10px;
+    --tilt: 0.25deg;
+}
+
+.carousel-row:nth-child(9n) {
+    --stagger-y: -10px;
+    --tilt: -0.55deg;
 }
 
 .carousel-row.muted {
@@ -774,6 +873,10 @@ main {
         font-size: 0.84rem;
     }
 
+    .language-switcher {
+        margin-left: auto;
+    }
+
     .primary-link,
     .secondary-link {
         flex: 1 1 150px;
@@ -812,10 +915,15 @@ main {
 
     .carousel-track {
         grid-auto-columns: var(--carousel-card-width);
+        grid-template-rows: repeat(3, 98px);
     }
 
     .product-carousel {
         --carousel-card-width: 82vw;
+    }
+
+    .carousel-row {
+        height: 92px;
     }
 
     .carousel-row em {
