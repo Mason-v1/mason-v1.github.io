@@ -20,6 +20,7 @@
 | Emotify | 6759697246 | https://apps.apple.com/app/id6759697246 | Meme、表情和轻量表达内容创作。 | `assets/images/app-icons/emotify.jpg` | `privacy/emotify/privacy_policy.html`, `privacy/emotify/privacy_policy_en.html` |
 | Liply | 6779545464 | https://apps.apple.com/app/id6779545464 | AI 口红试色镜，实时预览和收藏色号。 | `assets/images/app-icons/liply.jpg` | `privacy/liply/privacy_zh.html`, `privacy/liply/privacy_en.html` |
 | Lift | 6783653531 | https://apps.apple.com/app/id6783653531 | 健身训练记录，追踪动作、重量和进步。 | `assets/images/app-icons/lift.png` | `privacy/stronger/privacy_zh.html`, `privacy/stronger/privacy_en.html` |
+| PixSafe | 6785788544 | https://apps.apple.com/app/id6785788544 | 分享前清理照片里的定位、EXIF 和可见隐私信息。 | `assets/images/app-icons/pixsafe.jpg` | `privacy/pixsafe/privacy_zh.html`, `privacy/pixsafe/privacy_en.html` |
 
 ## Privacy Pages Awaiting App Store Details
 
@@ -27,4 +28,4 @@
 
 | App / Folder | Known Info | Privacy |
 | --- | --- | --- |
-| PixSafe | 制作 iPhone 锁屏 Live Photo 的工具。 | `privacy/pixsafe/privacy_zh.html`, `privacy/pixsafe/privacy_en.html` |
+| 暂无 | - | - |

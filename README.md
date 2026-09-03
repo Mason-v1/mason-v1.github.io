@@ -15,6 +15,7 @@ Live site: https://mason-v1.github.io/Apps/
 - **Emotify** — A simple meme and expression content creator.
 - **Liply** — AI lipstick try-on for previewing and saving beauty looks.
 - **Lift** — A focused workout log for tracking sets, weights, and progress.
+- **PixSafe** — Photo privacy cleaner for removing metadata and masking visible details before sharing.
 
 ## Built With
 

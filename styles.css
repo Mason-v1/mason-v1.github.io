@@ -187,7 +187,6 @@ main {
 .hero,
 .products-section,
 .manifesto-section,
-.proof-section,
 .contact-section,
 .footer {
     position: relative;
@@ -286,6 +285,7 @@ main {
 .hero-stack {
     display: grid;
     gap: 12px;
+    justify-items: end;
 }
 
 .mini-product {
@@ -301,12 +301,16 @@ main {
     transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
 }
 
-.mini-product:nth-child(2) {
-    margin-left: 28px;
+.hero-stack .mini-product {
+    max-width: 360px;
+    margin-left: auto;
 }
 
-.mini-product:nth-child(3) {
-    margin-left: 56px;
+.hero-stack .artino-spotlight {
+    width: min(100%, 430px);
+    max-width: 430px;
+    display: block;
+    padding: 24px;
 }
 
 .mini-product:hover {
@@ -326,6 +330,76 @@ main {
 
 .mini-product img {
     object-fit: cover;
+}
+
+.spotlight-badge {
+    width: fit-content;
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 22px;
+    border: 1px solid rgba(47, 138, 92, 0.16);
+    border-radius: 999px;
+    background: var(--accent);
+    padding: 0 11px;
+    color: var(--primary-strong);
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.spotlight-head {
+    display: grid;
+    grid-template-columns: 82px minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+}
+
+.artino-spotlight .spotlight-head img {
+    width: 82px;
+    height: 82px;
+    border-radius: 18px;
+    box-shadow: 0 18px 32px rgba(41, 72, 55, 0.16);
+}
+
+.artino-spotlight .spotlight-meta {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.artino-spotlight .spotlight-head strong {
+    font-size: 1.9rem;
+    line-height: 1;
+}
+
+.artino-spotlight .spotlight-copy {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.68;
+}
+
+.spotlight-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.spotlight-details span {
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(47, 138, 92, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    padding: 0 10px;
+    color: var(--muted);
+    font-size: 0.76rem;
+    font-weight: 700;
 }
 
 .letter-icon {
@@ -370,9 +444,15 @@ main {
     font-weight: 700;
 }
 
+.artino-spotlight .mini-cta {
+    min-height: 38px;
+    margin-top: 22px;
+    padding: 0 15px;
+    font-size: 0.86rem;
+}
+
 .products-section,
 .manifesto-section,
-.proof-section,
 .contact-section {
     padding-top: 42px;
     padding-bottom: 34px;
@@ -383,8 +463,7 @@ main {
     margin-bottom: 24px;
 }
 
-.manifesto-section .section-heading,
-.proof-section .section-heading {
+.manifesto-section .section-heading {
     margin-bottom: 14px;
 }
 
@@ -405,22 +484,17 @@ main {
 
 .featured-grid {
     display: grid;
-    grid-template-columns: 1.12fr 0.88fr;
-    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
 }
 
 .feature-card {
-    min-height: 220px;
+    min-height: 330px;
     border: 1px solid var(--border);
     border-radius: 8px;
     background: var(--surface-strong);
     box-shadow: 0 14px 34px rgba(62, 91, 73, 0.1);
-}
-
-.feature-card-large {
-    grid-row: span 3;
-    min-height: 692px;
-    background: linear-gradient(160deg, #ffffff, #edf8f1);
 }
 
 .feature-card a {
@@ -428,7 +502,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-end;
     padding: 24px;
     transition: transform 160ms ease;
 }
@@ -440,29 +513,37 @@ main {
 .feature-icon {
     width: 68px;
     height: 68px;
-    margin-bottom: auto;
+    margin-bottom: 28px;
     border-radius: 16px;
     object-fit: cover;
     box-shadow: 0 12px 28px rgba(62, 91, 73, 0.18);
 }
 
-.feature-card-large .feature-icon {
-    width: 92px;
-    height: 92px;
-    border-radius: 22px;
-    font-size: 1.2rem;
-}
-
 .product-meta {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: var(--primary);
     font-size: 0.78rem;
     font-weight: 700;
 }
 
+.feature-proof {
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    border-radius: 999px;
+    background: #fff2ed;
+    padding: 5px 10px;
+    color: var(--warm-strong);
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
 .feature-card strong {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     font-size: clamp(1.45rem, 2.4vw, 2.2rem);
     line-height: 1.08;
 }
@@ -479,7 +560,7 @@ main {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 18px;
+    margin-top: auto;
     border-radius: 999px;
     background: var(--primary-strong);
     padding: 0 15px;
@@ -497,7 +578,7 @@ main {
 .product-carousel {
     --carousel-card-width: 320px;
     --carousel-gap: 10px;
-    --carousel-columns-per-set: 3;
+    --carousel-columns-per-set: 6;
     margin-top: 18px;
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -518,14 +599,12 @@ main {
 }
 
 .carousel-track {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: var(--carousel-card-width);
-    grid-template-rows: repeat(3, 84px);
+    display: flex;
+    align-items: center;
     width: max-content;
     gap: var(--carousel-gap);
     overflow: visible;
-    padding: 24px 12px 28px;
+    padding: 28px 12px 34px;
     animation: carouselLoop 30s linear infinite;
     will-change: transform;
 }
@@ -543,6 +622,8 @@ main {
     gap: 13px;
     align-items: center;
     height: 78px;
+    width: var(--carousel-card-width);
+    flex: 0 0 var(--carousel-card-width);
     min-width: 0;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.78);
@@ -558,49 +639,34 @@ main {
     transform: translateY(calc(var(--stagger-y) - 4px)) rotate(var(--tilt));
 }
 
-.carousel-row:nth-child(9n + 1) {
+.carousel-row:nth-child(6n + 1) {
     --stagger-y: -12px;
     --tilt: -0.7deg;
 }
 
-.carousel-row:nth-child(9n + 2) {
+.carousel-row:nth-child(6n + 2) {
     --stagger-y: 8px;
     --tilt: 0.35deg;
 }
 
-.carousel-row:nth-child(9n + 3) {
+.carousel-row:nth-child(6n + 3) {
     --stagger-y: 28px;
     --tilt: -0.25deg;
 }
 
-.carousel-row:nth-child(9n + 4) {
+.carousel-row:nth-child(6n + 4) {
     --stagger-y: 12px;
     --tilt: 0.65deg;
 }
 
-.carousel-row:nth-child(9n + 5) {
+.carousel-row:nth-child(6n + 5) {
     --stagger-y: -8px;
     --tilt: -0.35deg;
 }
 
-.carousel-row:nth-child(9n + 6) {
+.carousel-row:nth-child(6n) {
     --stagger-y: 18px;
-    --tilt: 0.4deg;
-}
-
-.carousel-row:nth-child(9n + 7) {
-    --stagger-y: 30px;
-    --tilt: -0.45deg;
-}
-
-.carousel-row:nth-child(9n + 8) {
-    --stagger-y: 10px;
-    --tilt: 0.25deg;
-}
-
-.carousel-row:nth-child(9n) {
-    --stagger-y: -10px;
-    --tilt: -0.55deg;
+    --tilt: 0.45deg;
 }
 
 .carousel-row.muted {
@@ -638,8 +704,7 @@ main {
     padding-top: 62px;
 }
 
-.manifesto-grid,
-.proof-grid {
+.manifesto-grid {
     display: grid;
     gap: 16px;
 }
@@ -648,8 +713,7 @@ main {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.manifesto-card,
-.proof-card {
+.manifesto-card {
     border: 1px solid var(--border);
     border-radius: 8px;
     background: var(--surface-strong);
@@ -664,8 +728,7 @@ main {
     padding: 22px;
 }
 
-.manifesto-card span,
-.proof-card span {
+.manifesto-card span {
     width: fit-content;
     display: inline-flex;
     align-items: center;
@@ -679,8 +742,7 @@ main {
     font-weight: 700;
 }
 
-.manifesto-card strong,
-.proof-card strong {
+.manifesto-card strong {
     display: block;
     margin-top: 28px;
     color: var(--foreground);
@@ -689,46 +751,12 @@ main {
     line-height: 1.28;
 }
 
-.manifesto-card small,
-.proof-card small {
+.manifesto-card small {
     display: block;
     margin-top: 10px;
     color: var(--muted);
     font-size: 0.9rem;
     line-height: 1.7;
-}
-
-.proof-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.proof-card {
-    min-height: 236px;
-    display: flex;
-    flex-direction: column;
-    padding: 22px;
-    transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
-}
-
-.proof-card:hover {
-    border-color: rgba(223, 118, 91, 0.34);
-    background: #fffdfb;
-    transform: translateY(-2px);
-}
-
-.proof-card b {
-    width: fit-content;
-    min-height: 34px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 18px;
-    border-radius: 999px;
-    background: var(--soft);
-    padding: 0 12px;
-    color: var(--primary-strong);
-    font-size: 0.82rem;
-    font-weight: 700;
 }
 
 .contact-grid {
@@ -815,8 +843,8 @@ main {
         padding-top: 64px;
     }
 
-    .mini-product:nth-child(2),
-    .mini-product:nth-child(3) {
+    .hero-stack .mini-product {
+        max-width: none;
         margin-left: 0;
     }
 
@@ -824,14 +852,8 @@ main {
         grid-template-columns: 1fr;
     }
 
-    .manifesto-grid,
-    .proof-grid {
+    .manifesto-grid {
         grid-template-columns: 1fr;
-    }
-
-    .feature-card-large {
-        grid-row: auto;
-        min-height: 320px;
     }
 
     .feature-card {
@@ -914,8 +936,8 @@ main {
     }
 
     .carousel-track {
-        grid-auto-columns: var(--carousel-card-width);
-        grid-template-rows: repeat(3, 98px);
+        padding-top: 30px;
+        padding-bottom: 38px;
     }
 
     .product-carousel {
