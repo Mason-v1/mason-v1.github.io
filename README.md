@@ -27,3 +27,4 @@ Live site: https://mason-v1.github.io/Apps/
 
 - GitHub: https://github.com/Mason-v1
 - Email: zhyl1881@163.com
+- Xiaohongshu: https://xhslink.cn/o/3GIciDZh7x5

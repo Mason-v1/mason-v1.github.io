@@ -127,6 +127,11 @@ svg {
     height: 15px;
 }
 
+.social-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
 .page-nav a {
     min-height: 34px;
     display: inline-flex;
@@ -427,6 +432,7 @@ main {
     color: var(--muted);
     font-size: 0.82rem;
     line-height: 1.45;
+    overflow-wrap: anywhere;
 }
 
 .mini-cta {
@@ -761,7 +767,7 @@ main {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
 }
 
@@ -797,6 +803,12 @@ main {
 .contact-icon svg {
     width: 24px;
     height: 24px;
+}
+
+.contact-icon-text {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .arrow {
@@ -858,6 +870,10 @@ main {
 
     .feature-card {
         min-height: 240px;
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 

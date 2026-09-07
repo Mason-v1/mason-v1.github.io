@@ -55,7 +55,8 @@
             manifestoThreeCopy: "界面应该把注意力还给内容本身。默认状态要轻，关键动作要明显，细节要经得起反复使用。",
             contactLabel: "联系",
             contactTitle: "产品合作、支持反馈，或者聊聊新的小工具。",
-            email: "邮箱"
+            email: "邮箱",
+            xiaohongshu: "小红书"
         },
         en: {
             pageTitle: "MasonApps | Apple Platform Products",
@@ -110,7 +111,8 @@
             manifestoThreeCopy: "The interface should give attention back to the content. Defaults should feel light, important actions should be clear, and details should hold up under repeated use.",
             contactLabel: "Contact",
             contactTitle: "For product collaboration, support feedback, or a conversation about new little tools.",
-            email: "Email"
+            email: "Email",
+            xiaohongshu: "Xiaohongshu"
         }
     };
 
