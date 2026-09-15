@@ -2,7 +2,7 @@
 
 Personal portfolio for Mason Zhang, an independent iOS and macOS developer building small, focused Apple-native tools.
 
-Live site: https://mason-v1.github.io/Apps/
+Live site: https://mason-v1.github.io/
 
 ## Apps
 
