@@ -2,6 +2,14 @@
 version: 1
 generated_from: catalog/apps.yaml
 entries:
+- app: ocre
+  authoring_status: app-local
+  source_file: "../Art/docs/PRIVACY_POLICY.md"
+  source_sha256: 646cb801f1f2d73eb290088c0efdcf1fa13158272e80960f95c2d0df95725162
+  published_file: web/portfolio/privacy/ocre/PRIVACY_POLICY.md
+  published_sha256: 646cb801f1f2d73eb290088c0efdcf1fa13158272e80960f95c2d0df95725162
+  public_url: https://mason-v1.github.io/privacy/ocre/PRIVACY_POLICY.md
+  status: current
 - app: artino
   authoring_status: app-local
   source_file: "../Artino/App/Resources/Legal/privacy_zh.html"
@@ -21,19 +29,19 @@ entries:
 - app: rovo-cam
   authoring_status: app-local
   source_file: "../Rovo/Docs/rovocam-web/privacy_zh.html"
-  source_sha256: 5464ae3323be5ef428b9fd186c166e1a15536dcc569b5f769135c8fdd397c0fd
+  source_sha256: 931f2ba2349149a6a4e44e0dca107b487a17e6dd4f7525313bf362414687cbb1
   published_file: web/portfolio/privacy/rovocam/privacy_zh.html
   published_sha256: 5464ae3323be5ef428b9fd186c166e1a15536dcc569b5f769135c8fdd397c0fd
   public_url: https://mason-v1.github.io/privacy/rovocam/privacy_zh.html
-  status: current
+  status: drift
 - app: rovo-cam
   authoring_status: app-local
   source_file: "../Rovo/Docs/rovocam-web/privacy_en.html"
-  source_sha256: e9816c5b93f791a2dfc765fd4e80e871506a47671f73f9f4e946c61d707bad1d
+  source_sha256: 4bfb5a1db10d1107f3f297ac8d9ac3327fbd88c57add258097494c64a2735a26
   published_file: web/portfolio/privacy/rovocam/privacy_en.html
   published_sha256: e9816c5b93f791a2dfc765fd4e80e871506a47671f73f9f4e946c61d707bad1d
   public_url: https://mason-v1.github.io/privacy/rovocam/privacy_en.html
-  status: current
+  status: drift
 - app: livetoframe
   authoring_status: app-local
   source_file: "../LiveToPhoto/LiveToPhoto/Resources/HTML/privacy.html"
@@ -45,19 +53,19 @@ entries:
 - app: photoframify
   authoring_status: app-local
   source_file: "../PhotoFrame-iOS/PhotoFrame/Resources/privacy_zh.html"
-  source_sha256: 7f1cf2fd7f0b977fa924ffd6d9f3b2e63a4ea5e9b661cc2c6697d5c0839df900
+  source_sha256: c52fda6e79c52cb61f5577e89ac5097dbe695cd62600293d1910431c4634d27f
   published_file: web/portfolio/privacy/photo-frame/privacy_zh.html
   published_sha256: 7f1cf2fd7f0b977fa924ffd6d9f3b2e63a4ea5e9b661cc2c6697d5c0839df900
   public_url: https://mason-v1.github.io/privacy/photo-frame/privacy_zh.html
-  status: current
+  status: drift
 - app: photoframify
   authoring_status: app-local
   source_file: "../PhotoFrame-iOS/PhotoFrame/Resources/privacy_en.html"
-  source_sha256: 86bdb20330076c2dde6cda0bbffc2878f6716467d4d645d1cbb2aee7ccb5bb4d
+  source_sha256: e553d2911a01cedb6bb1389c119acf277cadafc7f5a07a27571f16fb029a0f47
   published_file: web/portfolio/privacy/photo-frame/privacy_en.html
   published_sha256: 86bdb20330076c2dde6cda0bbffc2878f6716467d4d645d1cbb2aee7ccb5bb4d
   public_url: https://mason-v1.github.io/privacy/photo-frame/privacy_en.html
-  status: current
+  status: drift
 - app: photo-collage-generator
   authoring_status: app-local
   source_file: "../PhotoCollage/PhotoCollage/Resources/privacy_zh.html"
