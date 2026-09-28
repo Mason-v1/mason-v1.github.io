@@ -8,7 +8,7 @@ entries:
   source_sha256: 646cb801f1f2d73eb290088c0efdcf1fa13158272e80960f95c2d0df95725162
   published_file: web/portfolio/privacy/ocre/PRIVACY_POLICY.md
   published_sha256: 646cb801f1f2d73eb290088c0efdcf1fa13158272e80960f95c2d0df95725162
-  public_url: https://mason-v1.github.io/privacy/ocre/PRIVACY_POLICY.md
+  public_url: https://mason-v1.github.io/privacy/ocre/PRIVACY_POLICY.html
   status: current
 - app: artino
   authoring_status: app-local
