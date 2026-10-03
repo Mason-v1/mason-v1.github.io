@@ -2,6 +2,22 @@
 version: 1
 generated_from: catalog/apps.yaml
 entries:
+- app: kidstars
+  authoring_status: app-local
+  source_file: "../KidStars/KidStars/Resources/privacy_zh.html"
+  source_sha256: a0d1c7b97c3ac38d71449b78e5c3a4b0eac5cc1c91e61bf6675b539d7f582b79
+  published_file: web/portfolio/privacy/kidstars/privacy_zh.html
+  published_sha256: a0d1c7b97c3ac38d71449b78e5c3a4b0eac5cc1c91e61bf6675b539d7f582b79
+  public_url: https://mason-v1.github.io/privacy/kidstars/privacy_zh.html
+  status: current
+- app: kidstars
+  authoring_status: app-local
+  source_file: "../KidStars/KidStars/Resources/privacy_en.html"
+  source_sha256: 45e0244e9f1bb0c9bdb3f343d0280e398732ae3919979079fce1ddfb046438c9
+  published_file: web/portfolio/privacy/kidstars/privacy_en.html
+  published_sha256: 45e0244e9f1bb0c9bdb3f343d0280e398732ae3919979079fce1ddfb046438c9
+  public_url: https://mason-v1.github.io/privacy/kidstars/privacy_en.html
+  status: current
 - app: ocre
   authoring_status: app-local
   source_file: "../Art/docs/PRIVACY_POLICY.md"
