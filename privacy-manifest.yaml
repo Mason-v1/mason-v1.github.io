@@ -26,6 +26,38 @@ entries:
   published_sha256: 646cb801f1f2d73eb290088c0efdcf1fa13158272e80960f95c2d0df95725162
   public_url: https://mason-v1.github.io/privacy/ocre/PRIVACY_POLICY.html
   status: current
+- app: rovopix
+  authoring_status: app-local
+  source_file: "../RovoCleaner/App/Resources/Legal/privacy_zh.html"
+  source_sha256: 5e74e4b41e905f1dc7eda276822f52d81e2f6462cb8c7f3d15bff61d40a75eed
+  published_file: web/portfolio/privacy/rovopix/privacy_zh.html
+  published_sha256: 5e74e4b41e905f1dc7eda276822f52d81e2f6462cb8c7f3d15bff61d40a75eed
+  public_url: https://mason-v1.github.io/privacy/rovopix/privacy_zh.html
+  status: current
+- app: rovopix
+  authoring_status: app-local
+  source_file: "../RovoCleaner/App/Resources/Legal/privacy_en.html"
+  source_sha256: 3b40f6a4bcc59fc2580c4268fbf0d5b5d99094677c626276ea0f6e5ecd67b8a2
+  published_file: web/portfolio/privacy/rovopix/privacy_en.html
+  published_sha256: 3b40f6a4bcc59fc2580c4268fbf0d5b5d99094677c626276ea0f6e5ecd67b8a2
+  public_url: https://mason-v1.github.io/privacy/rovopix/privacy_en.html
+  status: current
+- app: rovopix
+  authoring_status: app-local
+  source_file: "../RovoCleaner/App/Resources/Legal/terms_zh.html"
+  source_sha256: 2797e957ce30cfc686aee2ecf73f021351687d71cbfe9381ae2fdf9f4d175279
+  published_file: web/portfolio/privacy/rovopix/terms_zh.html
+  published_sha256: 2797e957ce30cfc686aee2ecf73f021351687d71cbfe9381ae2fdf9f4d175279
+  public_url: https://mason-v1.github.io/privacy/rovopix/terms_zh.html
+  status: current
+- app: rovopix
+  authoring_status: app-local
+  source_file: "../RovoCleaner/App/Resources/Legal/terms_en.html"
+  source_sha256: 388ab30b5928e086e255bacd9af150fa28bf5ea5f69fa495ea0cd606128a6e34
+  published_file: web/portfolio/privacy/rovopix/terms_en.html
+  published_sha256: 388ab30b5928e086e255bacd9af150fa28bf5ea5f69fa495ea0cd606128a6e34
+  public_url: https://mason-v1.github.io/privacy/rovopix/terms_en.html
+  status: current
 - app: artino
   authoring_status: app-local
   source_file: "../Artino/App/Resources/Legal/privacy_zh.html"
