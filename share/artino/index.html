@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3ed">
+  <meta name="description" content="Artino Zine 分享活动：发布作品领取周会员，点赞达标可领取更长会员。">
+  <title>分享你的 Zine，领取会员 · Artino</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+      color: #26251f;
+      background: #f6f3ed;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; line-height: 1.65; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #bd744e; outline-offset: 4px; border-radius: 6px; }
+    .shell { width: min(100% - 40px, 960px); margin-inline: auto; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 26px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; text-decoration: none; letter-spacing: -.02em; }
+    .brand img { width: 36px; height: 36px; border-radius: 10px; object-fit: cover; }
+    .header-actions { display: flex; align-items: center; gap: 18px; }
+    .back { color: #646259; font-size: .9rem; text-decoration: none; }
+    .back:hover, .text-link:hover { text-decoration: underline; }
+    .language-switch { display: flex; gap: 3px; padding: 3px; border: 1px solid #ddd5ca; border-radius: 999px; background: #fffdfa; }
+    .language-switch button { min-width: 42px; border: 0; border-radius: 999px; background: transparent; color: #6b675f; font: inherit; font-size: .78rem; font-weight: 650; cursor: pointer; }
+    .language-switch button[aria-pressed="true"] { background: #292a25; color: white; }
+    main { padding-bottom: 72px; }
+    .hero { position: relative; overflow: hidden; border: 1px solid #e4ddd2; border-radius: 28px; background: #eae1d3; padding: clamp(34px, 7vw, 74px); }
+    .hero::after { content: ""; position: absolute; width: 260px; height: 340px; right: -72px; top: -95px; border: 20px solid rgba(255,255,255,.36); border-radius: 34px; transform: rotate(18deg); pointer-events: none; }
+    .eyebrow { margin: 0 0 18px; color: #775941; font-size: .78rem; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+    h1 { max-width: 720px; margin: 0; font-size: clamp(2.35rem, 6.5vw, 4.8rem); line-height: 1.12; letter-spacing: -.05em; }
+    .hero-copy { max-width: 610px; margin: 20px 0 26px; color: #554f47; font-size: clamp(1rem, 2vw, 1.13rem); }
+    .activity-status { display: inline-flex; margin: 0 0 22px; padding: 7px 12px; border: 1px solid #b79778; border-radius: 999px; color: #765237; background: #f8eee2; font-size: .82rem; font-weight: 700; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 11px 20px; border-radius: 999px; font-weight: 650; text-decoration: none; transition: transform .18s ease, background .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: #282822; color: #fff; }
+    .button-primary:hover { background: #454238; }
+    .button-secondary { border: 1px solid #b9aa98; background: rgba(255,255,255,.38); }
+    .section { padding-top: clamp(38px, 6vw, 64px); }
+    .section-heading { max-width: 690px; margin-bottom: 20px; }
+    .section h2 { margin: 0 0 10px; font-size: clamp(1.65rem, 3.8vw, 2.3rem); line-height: 1.25; letter-spacing: -.04em; }
+    .section-heading p, .note { margin: 0; color: #66635c; }
+    .step-grid, .platform-grid, .reward-grid { display: grid; gap: 14px; }
+    .step-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .platform-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .reward-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .reward-card { display: grid; place-content: center; min-height: 106px; padding: 12px; border: 1px solid #d9caba; border-radius: 16px; background: #fffdfa; text-align: center; }
+    .reward-card h3 { margin: 0 0 5px; color: #885b3e; font-size: clamp(.9rem, 2.2vw, 1.15rem); }
+    .reward-card p { margin: 0; color: #777167; font-size: .78rem; }
+    .reward-card strong { color: #4f4940; font-size: 1.08rem; font-weight: 650; }
+    .reward-note { margin: 14px 0 0; color: #6b675f; font-size: .86rem; }
+    .card, .platform, .contact { border: 1px solid #e4ded5; border-radius: 20px; background: #fffdfa; }
+    .card { padding: 24px; }
+    .step-number { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: 16px; border-radius: 50%; background: #e8ddd0; color: #6d4a32; font-size: .85rem; font-weight: 800; }
+    h3 { margin: 0 0 9px; font-size: 1.08rem; line-height: 1.35; }
+    .card p { margin: 0; color: #5f5d56; font-size: .94rem; }
+    .material-strip { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 12px; color: #5f5d56; font-size: .87rem; }
+    .material-strip strong { margin-right: 4px; color: #3d3b34; }
+    .material-strip span { padding: 5px 10px; border: 1px solid #e4ded5; border-radius: 999px; background: #fffdfa; }
+    .platform { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 66px; padding: 16px 20px; font-weight: 650; text-decoration: none; transition: border-color .18s ease, transform .18s ease; }
+    .platform:hover { border-color: #ac7552; transform: translateY(-2px); }
+    .arrow { color: #a27252; font-size: 1.2rem; }
+    .contact { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; padding: clamp(24px, 4vw, 38px); background: #292a25; color: white; }
+    .contact h2 { margin-bottom: 8px; }
+    .contact p { margin: 0; color: #e1ded6; }
+    .contact .button { background: #f2e9db; color: #282822; }
+    .contact .button:hover { background: white; }
+    .mail-address { display: inline-block; margin-top: 13px; color: #f2e9db; overflow-wrap: anywhere; }
+    .footnote { margin-top: 22px; color: #69665e; font-size: .88rem; }
+    .footnote p { margin: 0 0 6px; }
+    footer { border-top: 1px solid #e2dbd0; padding: 24px 0 34px; color: #77736c; font-size: .84rem; }
+    footer .shell { display: flex; justify-content: space-between; gap: 20px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+    .text-link { text-underline-offset: 3px; }
+    @media (max-width: 740px) {
+      .step-grid { grid-template-columns: 1fr; }
+      .platform-grid, .reward-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact { grid-template-columns: 1fr; }
+      .contact .button { justify-self: start; }
+      .step-number { margin-bottom: 12px; }
+    }
+    @media (max-width: 450px) {
+      .shell { width: min(100% - 28px, 960px); }
+      .hero { border-radius: 22px; padding: 32px 25px; }
+      .platform-grid { grid-template-columns: 1fr; }
+      .reward-card { min-height: 92px; padding: 10px 4px; }
+      .topbar { flex-wrap: wrap; padding-block: 18px; }
+      .header-actions { width: 100%; justify-content: space-between; gap: 9px; }
+      .back { font-size: .78rem; }
+      footer .shell { flex-direction: column; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button, .platform { transition: none; }
+      .button:hover, .platform:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" id="app-store-link" href="https://apps.apple.com/cn/app/id6774119167" target="_blank" rel="noopener noreferrer" aria-label="在 App Store 查看 Artino" data-i18n-aria-label="brandAria">
+      <img src="../../assets/images/app-icons/artino.png" alt="" width="36" height="36">
+      <span data-i18n="brand">Artino</span>
+    </a>
+    <div class="header-actions">
+      <a class="back" href="../../" data-i18n="back">返回开发者主页 ↗</a>
+      <div class="language-switch" role="group" aria-label="语言 / Language">
+        <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow" data-i18n="eyebrow">Artino · Zine 分享活动</p>
+      <span class="activity-status" data-i18n="activityStatus">活动进行中</span>
+      <h1 id="page-title"><span data-i18n="heroLine1">分享你的 Zine，</span><br><span data-i18n="heroLine2">领取 Artino Pro。</span></h1>
+      <p class="hero-copy" data-i18n="heroCopy">用 Artino 把照片做成迷你杂志，公开分享成品和真实体验。发帖即可申请周会员；点赞超过 10、20、30，可领取更长会员。</p>
+      <div class="actions">
+        <a class="button button-primary" href="#rewards" data-i18n="viewRules">查看活动规则 ↓</a>
+      </div>
+    </section>
+
+    <section class="section" id="rewards" aria-labelledby="rewards-title">
+      <div class="section-heading">
+        <h2 id="rewards-title" data-i18n="rewardsTitle">会员奖励</h2>
+        <p data-i18n="rewardsIntro">活动自本页上线起开始，结束时间另行公告。</p>
+      </div>
+      <div class="reward-grid">
+        <article class="reward-card"><h3 data-i18n="weekly">周会员</h3><p><strong data-i18n="postToEarn">发帖</strong> <span data-i18n="qualifies">即可</span></p></article>
+        <article class="reward-card"><h3 data-i18n="monthly">月度会员</h3><p><strong>11+</strong> <span data-i18n="likes">赞</span></p></article>
+        <article class="reward-card"><h3 data-i18n="yearly">年度会员</h3><p><strong>21+</strong> <span data-i18n="likes">赞</span></p></article>
+        <article class="reward-card"><h3 data-i18n="lifetime">终身会员</h3><p><strong>31+</strong> <span data-i18n="likes">赞</span></p></article>
+      </div>
+      <p class="reward-note" data-i18n="rewardNote">仅限活动上线后发布的原创公开帖子。奖励按申请核验时达到的最高档发放，不叠加；Reddit 以赞成票计，虚假互动无效。</p>
+    </section>
+
+    <section class="section" id="steps" aria-labelledby="steps-title">
+      <div class="section-heading">
+        <h2 id="steps-title" data-i18n="stepsTitle">如何参与</h2>
+      </div>
+      <div class="step-grid">
+        <article class="card">
+          <span class="step-number" aria-hidden="true">01</span>
+          <h3 data-i18n="makeTitle">制作</h3>
+          <p data-i18n="makeCopy">用 Artino 排版并导出一本照片 Zine 或迷你杂志。</p>
+        </article>
+        <article class="card">
+          <span class="step-number" aria-hidden="true">02</span>
+          <h3 data-i18n="postTitle">发布</h3>
+          <p data-i18n="postCopy">公开分享作品和真实体验。可以不主动写明使用 Artino 制作；有人询问时可以告知。</p>
+        </article>
+        <article class="card">
+          <span class="step-number" aria-hidden="true">03</span>
+          <h3 data-i18n="emailTitle">邮件申请</h3>
+          <p data-i18n="emailCopy">发布后发送平台和帖子链接；如已达到点赞档位，请一并说明。</p>
+        </article>
+      </div>
+      <div class="material-strip" aria-label="发帖内容要求" data-i18n-aria-label="materialsAria">
+        <strong data-i18n="materialsLabel">帖子需包含</strong>
+        <span data-i18n="screenshot">Artino 使用截图</span><span data-i18n="resultImage">Zine 成品图</span><span data-i18n="shortCopy">真实使用感受</span>
+      </div>
+    </section>
+
+    <section class="section" id="platforms" aria-labelledby="platforms-title">
+      <div class="section-heading">
+        <h2 id="platforms-title" data-i18n="platformsTitle">发布平台</h2>
+        <p data-i18n="platformsCopy">选一个常用平台，点击前往。</p>
+      </div>
+      <div class="platform-grid">
+        <a class="platform" href="https://www.xiaohongshu.com/" target="_blank" rel="noopener noreferrer"><span data-i18n="xiaohongshu">小红书</span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="platform" href="https://www.douyin.com/" target="_blank" rel="noopener noreferrer"><span data-i18n="douyin">抖音</span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="platform" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer"><span>TikTok</span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="platform" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><span>Instagram</span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="platform" href="https://x.com/" target="_blank" rel="noopener noreferrer"><span>X</span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="platform" href="https://www.reddit.com/" target="_blank" rel="noopener noreferrer"><span>Reddit</span><span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="contact">
+        <div>
+          <h2 id="contact-title" data-i18n="contactTitle">发来你的帖子链接</h2>
+          <p data-i18n="contactCopy">邮件中请写明发布平台和帖子链接。</p>
+          <a class="mail-address text-link" href="mailto:zhyl1881@163.com">zhyl1881@163.com</a>
+        </div>
+        <a class="button" id="submission-email" href="mailto:zhyl1881@163.com?subject=Artino%20%E5%88%86%E4%BA%AB%E6%8A%95%E7%A8%BF&amp;body=%E5%8F%91%E5%B8%83%E5%B9%B3%E5%8F%B0%EF%BC%9A%0A%E5%B8%96%E5%AD%90%E9%93%BE%E6%8E%A5%EF%BC%9A" data-i18n="emailButton">打开邮件并填写链接 ↗</a>
+      </div>
+      <div class="footnote">
+        <p data-i18n="privacyNote">请分享有权使用的图片，遮挡隐私；无需发送原图。不要求正面评价；如平台要求标注激励内容，请按规则标注。</p>
+        <p data-i18n="disclaimer">活动由 Artino 开发者组织，与 Apple 及各发布平台无关。未经同意，不会把邮件中的作品用于官方展示。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <span data-i18n="footer">© Artino · 由独立开发者 Mason 制作</span>
+      <nav class="footer-links" aria-label="开发者链接" data-i18n-aria-label="footerLinksAria">
+        <a class="text-link" href="https://xhslink.cn/o/1X72X8Q2yUs" target="_blank" rel="noopener noreferrer" data-i18n="myXiaohongshu">我的小红书</a>
+        <a class="text-link" href="https://x.com/fly2themoonz" target="_blank" rel="noopener noreferrer">X · @fly2themoonz</a>
+        <a class="text-link" id="privacy-link" href="../../privacy/artino/privacy_zh.html" data-i18n="privacyLink">隐私政策</a>
+      </nav>
+    </div>
+  </footer>
+  <script>
+    const translations = {
+      zh: {
+        title: "分享你的 Zine，领取会员 · Artino",
+        description: "Artino Zine 分享活动：发布作品领取周会员，点赞达标可领取更长会员。",
+        brand: "Artino",
+        brandAria: "在 App Store 查看 Artino",
+        back: "返回开发者主页 ↗",
+        eyebrow: "Artino · Zine 分享活动",
+        activityStatus: "活动进行中",
+        heroLine1: "分享你的 Zine，",
+        heroLine2: "领取 Artino Pro。",
+        heroCopy: "用 Artino 把照片做成迷你杂志，公开分享成品和真实体验。发帖即可申请周会员；点赞超过 10、20、30，可领取更长会员。",
+        viewRules: "查看活动规则 ↓",
+        rewardsTitle: "会员奖励",
+        rewardsIntro: "活动自本页上线起开始，结束时间另行公告。",
+        weekly: "周会员",
+        postToEarn: "发帖",
+        qualifies: "即可",
+        monthly: "月度会员",
+        yearly: "年度会员",
+        lifetime: "终身会员",
+        likes: "赞",
+        rewardNote: "仅限活动上线后发布的原创公开帖子。奖励按申请核验时达到的最高档发放，不叠加；Reddit 以赞成票计，虚假互动无效。",
+        stepsTitle: "如何参与",
+        makeTitle: "制作",
+        makeCopy: "用 Artino 排版并导出一本照片 Zine 或迷你杂志。",
+        postTitle: "发布",
+        postCopy: "公开分享作品和真实体验。可以不主动写明使用 Artino 制作；有人询问时可以告知。",
+        emailTitle: "邮件申请",
+        emailCopy: "发布后发送平台和帖子链接；如已达到点赞档位，请一并说明。",
+        materialsAria: "发帖内容要求",
+        materialsLabel: "帖子需包含",
+        screenshot: "Artino 使用截图",
+        resultImage: "Zine 成品图",
+        shortCopy: "真实使用感受",
+        platformsTitle: "发布平台",
+        platformsCopy: "选一个常用平台，点击前往。",
+        xiaohongshu: "小红书",
+        douyin: "抖音",
+        contactTitle: "发来你的帖子链接",
+        contactCopy: "邮件中请写明发布平台和帖子链接。",
+        emailButton: "打开邮件并填写链接 ↗",
+        privacyNote: "请分享有权使用的图片，遮挡隐私；无需发送原图。不要求正面评价；如平台要求标注激励内容，请按规则标注。",
+        disclaimer: "活动由 Artino 开发者组织，与 Apple 及各发布平台无关。未经同意，不会把邮件中的作品用于官方展示。",
+        footer: "© Artino · 由独立开发者 Mason 制作",
+        footerLinksAria: "开发者链接",
+        myXiaohongshu: "我的小红书",
+        privacyLink: "隐私政策",
+        emailSubject: "Artino 分享活动",
+        emailBody: "发布平台：\n帖子链接：\n补充说明（选填）："
+      },
+      en: {
+        title: "Share Your Zine · Artino",
+        description: "Share a zine made with Artino to earn a week of Pro. Reach higher like milestones for longer access.",
+        brand: "Artino",
+        brandAria: "View Artino on the App Store",
+        back: "Developer site ↗",
+        eyebrow: "Artino · Share your zine",
+        activityStatus: "Campaign open",
+        heroLine1: "Share your zine.",
+        heroLine2: "Get Artino Pro.",
+        heroCopy: "Make a photo zine with Artino and share the result and your honest experience. A qualifying post earns one week of Pro; more likes unlock longer access.",
+        viewRules: "See campaign details ↓",
+        rewardsTitle: "Membership rewards",
+        rewardsIntro: "The campaign starts when this page goes live. Its end date will be announced separately.",
+        weekly: "1 week",
+        postToEarn: "Post",
+        qualifies: "to qualify",
+        monthly: "1 month",
+        yearly: "1 year",
+        lifetime: "Lifetime",
+        likes: "likes",
+        rewardNote: "Only original public posts made after launch qualify. Rewards follow the highest tier reached when reviewed and do not stack. Reddit upvotes count; fake engagement does not.",
+        stepsTitle: "How to join",
+        makeTitle: "Create",
+        makeCopy: "Create and export a photo zine or mini magazine in Artino.",
+        postTitle: "Post",
+        postCopy: "Share your zine and honest experience publicly. You don't have to mention Artino unless someone asks.",
+        emailTitle: "Email us",
+        emailCopy: "After posting, email us the platform and post URL. Mention any like milestone already reached.",
+        materialsAria: "Post content requirements",
+        materialsLabel: "Include in your post",
+        screenshot: "Artino screenshot",
+        resultImage: "Finished zine",
+        shortCopy: "Honest feedback",
+        platformsTitle: "Where to post",
+        platformsCopy: "Choose a platform you use and open it below.",
+        xiaohongshu: "Xiaohongshu",
+        douyin: "Douyin",
+        contactTitle: "Send us your post",
+        contactCopy: "Email us the platform and your post URL.",
+        emailButton: "Open email draft ↗",
+        privacyNote: "Share only images you have the right to use. Hide private details; original photos are not needed. Honest feedback is welcome. Disclose incentives where a platform requires it.",
+        disclaimer: "This campaign is run by the Artino developer and is not affiliated with Apple or the listed platforms. We won't feature your work without your permission.",
+        footer: "© Artino · Made by independent developer Mason",
+        footerLinksAria: "Developer links",
+        myXiaohongshu: "My Xiaohongshu",
+        privacyLink: "Privacy Policy",
+        emailSubject: "Artino sharing campaign",
+        emailBody: "Platform:\nPost URL:\nAdditional notes (optional):"
+      }
+    };
+
+    const requestedLanguage = new URLSearchParams(location.search).get("lang");
+    const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language || "zh";
+    const initialLanguage = requestedLanguage === "zh" || requestedLanguage === "en"
+      ? requestedLanguage
+      : browserLanguage.toLowerCase().startsWith("zh") ? "zh" : "en";
+
+    function setLanguage(language) {
+      const copy = translations[language];
+      document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+      document.title = copy.title;
+      document.querySelector('meta[name="description"]').content = copy.description;
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        element.textContent = copy[element.dataset.i18n];
+      });
+      document.querySelectorAll("[data-i18n-aria-label]").forEach(element => {
+        element.setAttribute("aria-label", copy[element.dataset.i18nAriaLabel]);
+      });
+      document.querySelectorAll("[data-lang]").forEach(button => {
+        button.setAttribute("aria-pressed", String(button.dataset.lang === language));
+      });
+      document.querySelector("#privacy-link").href = language === "zh"
+        ? "../../privacy/artino/privacy_zh.html"
+        : "../../privacy/artino/privacy_en.html";
+      document.querySelector("#app-store-link").href = language === "zh"
+        ? "https://apps.apple.com/cn/app/id6774119167"
+        : "https://apps.apple.com/app/id6774119167";
+      document.querySelector("#submission-email").href = "mailto:zhyl1881@163.com?subject="
+        + encodeURIComponent(copy.emailSubject) + "&body=" + encodeURIComponent(copy.emailBody);
+    }
+
+    document.querySelectorAll("[data-lang]").forEach(button => {
+      button.addEventListener("click", () => setLanguage(button.dataset.lang));
+    });
+    setLanguage(initialLanguage);
+  </script>
+</body>
+</html>
