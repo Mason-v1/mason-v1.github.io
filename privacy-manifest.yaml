@@ -2,6 +2,22 @@
 version: 1
 generated_from: catalog/apps.yaml
 entries:
+- app: kiddoo
+  authoring_status: app-local
+  source_file: "../KidsFrame/Source/Module/Login/privacy.html"
+  source_sha256: 5339d8d4e6ec8edd5ab36a651fb37edbe0edbf36522420bc1210ed303463f464
+  published_file: web/portfolio/privacy/kiddoo/privacy_zh.html
+  published_sha256: 5339d8d4e6ec8edd5ab36a651fb37edbe0edbf36522420bc1210ed303463f464
+  public_url: https://mason-v1.github.io/privacy/kiddoo/privacy_zh.html
+  status: current
+- app: kiddoo
+  authoring_status: app-local
+  source_file: "../KidsFrame/Source/Module/Login/privacy_en.html"
+  source_sha256: d8315a475a4670769ca81647958c69d27ded1794e074d2067369d2703e2124f0
+  published_file: web/portfolio/privacy/kiddoo/privacy_en.html
+  published_sha256: d8315a475a4670769ca81647958c69d27ded1794e074d2067369d2703e2124f0
+  public_url: https://mason-v1.github.io/privacy/kiddoo/privacy_en.html
+  status: current
 - app: kidstars
   authoring_status: app-local
   source_file: "../KidStars/KidStars/Resources/privacy_zh.html"
